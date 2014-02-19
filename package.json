@@ -1,6 +1,6 @@
 {
   "name": "express-validation",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates the body, params, query, headers of a request and returns a 400 Bad request response; with errors; if any of the configured validation rules fail.",
   "homepage": "https://github.com/andrewkeig/express-validation",
@@ -9,14 +9,14 @@
     "url": "https://github.com/andrewkeig/express-validation"
   },
   "dependencies": {
-    "joi": "~2.3.1",
-    "underscore": "~1.5.2"
+    "joi": "*",
+    "underscore": "*"
   },
   "devDependencies": {
-    "mocha": "1.4.2",
-    "should": "~1.2.2",
-    "express": "~3.4.8",
-    "supertest": "~0.9.0"
+    "mocha": "*",
+    "should": "*",
+    "express": "*",
+    "supertest": "*"
   },
   "scripts": {
     "test": "mocha -R spec"

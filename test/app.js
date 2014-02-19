@@ -27,5 +27,9 @@ app.put('/user/:id', validate(validation.user.put), function(req, res){
     res.json(200);
 });
 
+app.post('/register', validate(validation.register.post), function(req, res){
+    res.json(200);
+});
+
 http.createServer(app);
 module.exports = app;

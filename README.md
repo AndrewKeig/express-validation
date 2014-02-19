@@ -99,6 +99,27 @@ Running the above test will produce the following response.
 }
 ```
 
+If you would prefer to simply return a lis of errors; you can flatten this structure; by passing an options array; with flatten set to true:
+
+module.exports.post = {
+  options : { flatten : true },
+  body: {
+    email: Joi.string().email().required(),
+    password: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
+  }
+};
+
+This will produce the following response; an array of strings.
+
+
+```
+[
+  "the value of password is not allowed to be empty",
+  "the value of password must match the regular expression /[a-zA-Z0-9]{3,30}/"
+]
+
+```
+
 #issues with headers
 When creating a validation object that checks ```req.headers```; please remember to use lowercase names; node.js will convert incoming headers to lowercase:
 
