@@ -101,6 +101,7 @@ Running the above test will produce the following response.
 
 If you would prefer to simply return a lis of errors; you can flatten this structure; by passing an options array; with flatten set to true:
 
+```
 module.exports.post = {
   options : { flatten : true },
   body: {
@@ -108,6 +109,7 @@ module.exports.post = {
     password: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
   }
 };
+```
 
 This will produce the following response; an array of strings.
 
