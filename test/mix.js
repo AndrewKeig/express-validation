@@ -46,7 +46,7 @@ describe('validate a mixture of request types', function () {
         .end(function (err, res) {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
-          response.errors[0].messages.length.should.equal(2);
+          response.errors[0].messages.length.should.equal(1);
           response.errors[0].field.should.equal('id')
           done();
         });
@@ -96,7 +96,7 @@ describe('validate a mixture of request types', function () {
         .end(function (err, res) {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
-          response.errors[0].messages.length.should.equal(1);
+          response.errors[0].messages.length.should.equal(2);
           response.errors[0].field.should.equal('accesstoken')
           done();
         });
