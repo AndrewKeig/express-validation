@@ -2,9 +2,10 @@ var express = require('express')
   , validate = require('../lib/index')
   , http = require('http')
   , validation = require('./validation')
+  , bodyParser = require('body-parser')
   , app = express();
 
-app.use(express.bodyParser());
+app.use(bodyParser());
 app.set('port', 3000);
 
 app.post('/login', validate(validation.login), function(req, res){
