@@ -125,6 +125,10 @@ This will produce the following response; an array of strings.
 #issues with headers
 When creating a validation object that checks ```req.headers```; please remember to use lowercase names; node.js will convert incoming headers to lowercase:
 
+If the validator receives headers not specified in the ```headers``` validation rule set, 
+they will be allowed through.  ```body```, ```params```, and ```query``` are
+strict, however, and do not allow unspecified items through.
+
 
 ```
 var Joi = require('joi');
