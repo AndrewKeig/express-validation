@@ -30,5 +30,6 @@
     "express",
     "validation",
     "validate"
-  ]
+  ],
+  "license": "MIT"
 }
