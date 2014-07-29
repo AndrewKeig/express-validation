@@ -3,7 +3,7 @@ var express = require('express')
   , http = require('http')
   , validation = require('./validation')
   , bodyParser = require('body-parser')
-  , app = express();
+  , app = express()
 
 app.use(bodyParser());
 app.set('port', 3000);
