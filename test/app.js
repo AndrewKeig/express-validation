@@ -32,5 +32,9 @@ app.post('/register', validate(validation.register.post), function(req, res){
     res.json(200);
 });
 
+app.post('/options', validate(validation.options), function(req, res){
+    res.json(200);
+})
+
 http.createServer(app);
 module.exports = app;
