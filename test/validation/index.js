@@ -1,3 +1,5 @@
+'use strict';
+
 exports.login = require('./login');
 exports.user = require('./user');
 exports.search = require('./search');

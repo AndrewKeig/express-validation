@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express')
   , validate = require('../lib/index')
   , http = require('http')
@@ -5,7 +7,8 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , app = express()
 
-app.use(bodyParser());
+app.use(bodyParser.json())
+
 app.set('port', 3000);
 
 app.post('/login', validate(validation.login), function(req, res){

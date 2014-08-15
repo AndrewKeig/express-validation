@@ -1,3 +1,5 @@
+'use strict';
+
 var validation = require('../lib/index')
 , app = require('./app')
 , should = require('should')
