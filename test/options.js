@@ -37,7 +37,6 @@ describe('schema options', function () {
         .send('')
         .expect(422)
         .end(function (err, res) {
-          console.log(res.text);
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           response.status.should.equal(422);
