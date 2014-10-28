@@ -39,5 +39,9 @@ app.post('/options', validate(validation.options), function(req, res){
     res.json(200);
 })
 
+app.use(function(err, req, res, next){
+  res.status(400).json(err);
+});
+
 http.createServer(app);
 module.exports = app;

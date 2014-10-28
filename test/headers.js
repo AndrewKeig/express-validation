@@ -34,7 +34,7 @@ describe('validate headers', function () {
         .end(function (err, res) {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
-          response.errors[0].messages.length.should.equal(2);
+          response.errors[0].messages.length.should.equal(1);
           done();
         });
       });

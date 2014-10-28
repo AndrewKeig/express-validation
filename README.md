@@ -1,7 +1,7 @@
 express-validation
 ==================
 
-express-validation is a middleware that validates the body, params, query, headers of a request and returns a 400 Bad request response; with errors; if any of the configured validation rules fail.
+express-validation is a middleware that validates the body, params, query, headers of a request and returns a response with errors; if any of the configured validation rules fail.
 
 [![build status](https://travis-ci.org/AndrewKeig/express-validation.svg)](http://travis-ci.org/andrewkeig/express-validation)
 
@@ -24,18 +24,25 @@ express-validation supports validating the followig:
 #setup
 In order to setup and use express-validation consider the following simple express application.  It has a single route; configured to use the ```express-validation``` middleware; it accepts as input ```validation.login```; which are the validation rules we have defined for this route.
 
+####Note: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0, so you will need to add an express error handler.
+
 ```
 var express = require('express')
   , validate = require('express-validation')
   , http = require('http') 
   , validation = require('./validation')
   , app = express();
-
+I
 app.use(express.bodyParser());
 app.set('port', 3000);
 
 app.post('/login', validate(validation.login), function(req, res){
     res.json(200);
+});
+
+//error handler, required as of 0.3.0
+app.use(function(err, req, res, next){
+  res.status(400).json(err);
 });
 
 http.createServer(app);
