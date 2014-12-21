@@ -3,7 +3,7 @@ express-validation
 
 express-validation is a middleware that validates the body, params, query, headers of a request and returns a response with errors; if any of the configured validation rules fail.
 
-[![build status](https://travis-ci.org/AndrewKeig/express-validation.svg)](http://travis-ci.org/andrewkeig/express-validation)
+[![build status](https://travis-ci.org/AndrewKeig/express-validation.svg)](http://travis-ci.org/AndrewKeig/express-validation)
 
 #install
 
