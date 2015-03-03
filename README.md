@@ -106,6 +106,9 @@ Running the above test will produce the following response.
 }
 ```
 
+## Options
+
+### Simple error response
 If you would prefer to simply return a list of errors; you can flatten this structure; by passing an options array; with `flatten` set to `true`:
 
 ```js
@@ -129,6 +132,8 @@ This will produce the following response; an array of strings.
 
 ```
 
+### Unknown schema items
+
 By default, additional items outside of the schema definition will be allowed to pass validation.  To enforce strict checking, set the `allowUnknown\*` options as follows:
 
 ```js
@@ -138,6 +143,19 @@ module.exports.post = {
     allowUnknownHeaders: false,
     allowUnknownQuery: false, 
     allowUnknownParams: false },
+  ...
+};
+```
+
+### Status codes and text
+By default, the status code is set to `400`, and status text to `Bad Request`, you can change this behaviour with the following:
+
+```js
+module.exports.post = {
+  options: {
+    status: 422,
+    statusText: 'Unprocessable Entity'
+  },
   ...
 };
 ```
