@@ -5,14 +5,14 @@ express-validation is a middleware that validates the body, params, query, heade
 
 [![build status](https://travis-ci.org/AndrewKeig/express-validation.svg)](http://travis-ci.org/AndrewKeig/express-validation)
 
-#install
+## install
 
+```sh
+$ npm install express-validation --save
 ```
-npm install express-validation --save
-```
 
 
-#supporting
+## supporting
 
 express-validation supports validating the followig: 
 
@@ -21,18 +21,16 @@ express-validation supports validating the followig:
 - query
 - headers
 
-#setup
+## setup
 In order to setup and use express-validation consider the following simple express application.  It has a single route; configured to use the ```express-validation``` middleware; it accepts as input ```validation.login```; which are the validation rules we have defined for this route.
 
-####Note: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0, so you will need to add an express error handler.
-
-```
+```js
 var express = require('express')
   , validate = require('express-validation')
   , http = require('http') 
   , validation = require('./validation')
   , app = express();
-I
+
 app.use(express.bodyParser());
 app.set('port', 3000);
 
@@ -53,7 +51,7 @@ The following segment defines our validation rules ```validation.login```.  Its 
 
 We have defined two rules ```email``` and ```password```.  They are encapsulated inside ```body```; which is important; as this defines their location, alternatives being, ```params```, ```query```, ```headers```.
 
-```
+```js
 var Joi = require('joi');
 
 module.exports = {
@@ -66,7 +64,7 @@ module.exports = {
 
 The following test, calls the route defined in our express application ```/login```; it passes in a payload with an ```email``` and empty ```password```.  
 
-```
+```js
 describe('when the request has a missing item in payload', function () {
   it('should return a 400 ok response and a single error', function(done){
 
@@ -91,7 +89,7 @@ describe('when the request has a missing item in payload', function () {
 
 Running the above test will produce the following response.
 
-```
+```json
 {
   "status": 400,
   "statusText": "Bad Request",
@@ -110,7 +108,7 @@ Running the above test will produce the following response.
 
 If you would prefer to simply return a lis of errors; you can flatten this structure; by passing an options array; with flatten set to true:
 
-```
+```js
 module.exports.post = {
   options : { flatten : true },
   body: {
@@ -123,7 +121,7 @@ module.exports.post = {
 This will produce the following response; an array of strings.
 
 
-```
+```js
 [
   "the value of password is not allowed to be empty",
   "the value of password must match the regular expression /[a-zA-Z0-9]{3,30}/"
@@ -134,7 +132,7 @@ This will produce the following response; an array of strings.
 By default, additional items outside of the schema definition will be allowed to pass
 validation.  To enforce strict checking, set the `allowUnknown\*` options as follows:
 
-```
+```js
 module.exports.post = {
   options : { 
     allowUnknownBody: false, 
@@ -145,11 +143,11 @@ module.exports.post = {
 };
 ```
 
-#issues with headers
+## issues with headers
 When creating a validation object that checks ```req.headers```; please remember to use lowercase names; node.js will convert incoming headers to lowercase:
 
 
-```
+```js
 var Joi = require('joi');
 
 module.exports = {
@@ -159,3 +157,11 @@ module.exports = {
   }
 };
 ```
+
+## changelog
+0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0, so you will need to add an express error handler.
+
+
+## License
+
+This work is licensed under the MIT License (see the LICENSE file).
