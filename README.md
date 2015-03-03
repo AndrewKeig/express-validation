@@ -5,23 +5,23 @@ express-validation is a middleware that validates the body, params, query, heade
 
 [![build status](https://travis-ci.org/AndrewKeig/express-validation.svg)](http://travis-ci.org/AndrewKeig/express-validation)
 
-## install
+## Install
 
 ```sh
 $ npm install express-validation --save
 ```
 
 
-## supporting
+## Supporting
 
-express-validation supports validating the followig: 
+`express-validation` supports validating the followig: 
 
 - body
 - params
 - query
 - headers
 
-## setup
+## Setup
 In order to setup and use express-validation consider the following simple express application.  It has a single route; configured to use the ```express-validation``` middleware; it accepts as input ```validation.login```; which are the validation rules we have defined for this route.
 
 ```js
@@ -143,7 +143,7 @@ module.exports.post = {
 };
 ```
 
-## issues with headers
+## Working with headers
 When creating a validation object that checks ```req.headers```; please remember to use lowercase names; node.js will convert incoming headers to lowercase:
 
 
@@ -158,7 +158,7 @@ module.exports = {
 };
 ```
 
-## changelog
+## Changelog
 0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0, so you will need to add an express error handler.
 
 
