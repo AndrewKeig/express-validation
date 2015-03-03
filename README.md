@@ -1,7 +1,7 @@
 express-validation
 ==================
 
-express-validation is a middleware that validates the body, params, query, headers of a request and returns a response with errors; if any of the configured validation rules fail.
+express-validation is a middleware that validates the `body`, `params`, `query`and `headers` of a request and returns a response with errors; if any of the configured validation rules fail.
 
 [![build status](https://travis-ci.org/AndrewKeig/express-validation.svg)](http://travis-ci.org/AndrewKeig/express-validation)
 
@@ -14,7 +14,7 @@ $ npm install express-validation --save
 
 ## Supporting
 
-`express-validation` supports validating the followig: 
+`express-validation` supports validating the following: 
 
 - body
 - params
@@ -22,7 +22,7 @@ $ npm install express-validation --save
 - headers
 
 ## Setup
-In order to setup and use express-validation consider the following simple express application.  It has a single route; configured to use the ```express-validation``` middleware; it accepts as input ```validation.login```; which are the validation rules we have defined for this route.
+In order to setup and use `express-validation` consider the following simple express application.  It has a single route; configured to use the `express-validation` middleware; it accepts as input `validation.login`; which are the validation rules we have defined for this route.
 
 ```js
 var express = require('express')
@@ -47,9 +47,9 @@ http.createServer(app);
 ```
 
 
-The following segment defines our validation rules ```validation.login```.  Its simply an object, which uses [https://github.com/spumko/joi](https://github.com/spumko/joi) to define validation rules for a request.
+The following section defines our validation rules `validation.login`.  This is simply an object, which uses [https://github.com/spumko/joi](https://github.com/spumko/joi) to define validation rules for a request.
 
-We have defined two rules ```email``` and ```password```.  They are encapsulated inside ```body```; which is important; as this defines their location, alternatives being, ```params```, ```query```, ```headers```.
+We have defined two rules `email` and `password`.  They are encapsulated inside `body`; which is important; as this defines their location, alternatives being, `params`, `query`, `headers`.
 
 ```js
 var Joi = require('joi');
@@ -62,7 +62,7 @@ module.exports = {
 };
 ```
 
-The following test, calls the route defined in our express application ```/login```; it passes in a payload with an ```email``` and empty ```password```.  
+The following test, calls the route defined in our express application `/login`; it passes in a payload with an `email` and empty `password`.  
 
 ```js
 describe('when the request has a missing item in payload', function () {
@@ -106,7 +106,7 @@ Running the above test will produce the following response.
 }
 ```
 
-If you would prefer to simply return a lis of errors; you can flatten this structure; by passing an options array; with flatten set to true:
+If you would prefer to simply return a list of errors; you can flatten this structure; by passing an options array; with `flatten` set to `true`:
 
 ```js
 module.exports.post = {
@@ -129,8 +129,7 @@ This will produce the following response; an array of strings.
 
 ```
 
-By default, additional items outside of the schema definition will be allowed to pass
-validation.  To enforce strict checking, set the `allowUnknown\*` options as follows:
+By default, additional items outside of the schema definition will be allowed to pass validation.  To enforce strict checking, set the `allowUnknown\*` options as follows:
 
 ```js
 module.exports.post = {
@@ -144,7 +143,7 @@ module.exports.post = {
 ```
 
 ## Working with headers
-When creating a validation object that checks ```req.headers```; please remember to use lowercase names; node.js will convert incoming headers to lowercase:
+When creating a validation object that checks `req.headers`; please remember to use `lowercase` names; node.js will convert incoming headers to lowercase:
 
 
 ```js
@@ -159,9 +158,11 @@ module.exports = {
 ```
 
 ## Changelog
-0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0, so you will need to add an express error handler.
+0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0 to allow the express application itself to return the error response.  So from 0.3.0 onwards, you will need to add an express error handler, and return an error response.
 
 
 ## License
 
 This work is licensed under the MIT License (see the LICENSE file).
+
+https://github.com/AndrewKeig/express-validation/blob/master/LICENSE
