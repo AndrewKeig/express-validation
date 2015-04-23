@@ -169,7 +169,7 @@ module.exports.post = {
 };
 ```
 
-### Status codes and text
+### Specific Status codes and text
 By default, the status code is set to `400`, and status text to `Bad Request`, you can change this behaviour with the following:
 
 ```js
@@ -181,6 +181,22 @@ module.exports.post = {
   ...
 };
 ```
+
+### Global options
+Status code and text can also be customized globally. At the same time specific behaviour still applies.
+
+```js
+var ev = require('express-validation');
+// assign options
+ev.options({
+  status: 422,
+  statusText: 'Unprocessable Entity'
+});
+
+// clear options back to default
+ev.options();
+```
+Thanks to node `require()` caching, all the other `express-validation` instances also have the same set of global options.
 
 ## Working with headers
 When creating a validation object that checks `req.headers`; please remember to use `lowercase` names; node.js will convert incoming headers to lowercase:
@@ -198,6 +214,7 @@ module.exports = {
 ```
 
 ## Changelog
+0.4.1: added `options()` method to [globally override configuration](#global-options).
 0.4.0: `express-validation` now returns a `ValidationError`, not a simple `Error`. This offer some advantages [when writing error handlers](#distinguish-errors-from-validationerrors).  
 0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0 to allow the express application itself to return the error response.  So from 0.3.0 onwards, you will need to add an express error handler, and return an error response.
 
