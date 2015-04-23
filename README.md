@@ -198,6 +198,7 @@ module.exports = {
 ```
 
 ## Changelog
+0.4.0: `express-validation` now returns a `ValidationError`, not a simple `Error`. This offer some advantages [when writing error handlers](#distinguish-errors-from-validationerrors).  
 0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0 to allow the express application itself to return the error response.  So from 0.3.0 onwards, you will need to add an express error handler, and return an error response.
 
 

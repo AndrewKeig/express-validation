@@ -1,6 +1,6 @@
 {
   "name": "express-validation",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates the body, params, query, headers of a request and returns a response with errors; if any of the configured validation rules fail.",
   "homepage": "https://github.com/andrewkeig/express-validation",
