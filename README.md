@@ -106,6 +106,28 @@ Running the above test will produce the following response.
 }
 ```
 
+## Distinguish `Error`(s) from `ValidationError`(s)
+Since 0.4.0 `express-validation` calls `next()` with a `ValidationError`, a specific type of `Error`.  
+This can be very handy when writing more complex error handlers for your Express application, a brief example follows:
+
+```js
+var ev = require('express-validation');
+
+// error handler
+app.use(function (err, req, res, next) {
+  // specific for validation errors
+  if (err istanceof ev.ValidationError) return res.status(err.status).json(err);
+
+  // other type of errors, it *might* also be a Runtime Error
+  // example handling
+  if (process.env.NODE_ENV !== 'production') {
+    return res.status(500).send(err.stack);
+  } else {
+    return res.status(500);
+  }
+});
+```
+
 ## Options
 
 ### Simple error response
@@ -176,6 +198,7 @@ module.exports = {
 ```
 
 ## Changelog
+0.4.0: `express-validation` now returns a `ValidationError`, not a simple `Error`. This offer some advantages [when writing error handlers](#distinguish-errors-from-validationerrors).  
 0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0 to allow the express application itself to return the error response.  So from 0.3.0 onwards, you will need to add an express error handler, and return an error response.
 
 
