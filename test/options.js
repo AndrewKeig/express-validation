@@ -48,3 +48,56 @@ describe('schema options', function () {
     });
   })
 });
+
+describe('global options', function () {
+
+  describe('when the user globally setups some options', function () {
+
+    it('they should be inherited by every validation instance', function () {
+
+      validation.options({
+        status: 422
+      });
+
+      var validationFn = validation(require('./validation/login'));
+      var fakeReq = {
+        body: {
+          email: "andrew.keiggmail.com",
+          password: "12356"
+        }
+      };
+
+      validationFn(fakeReq, undefined, function next (err) {
+        err.errors.length.should.equal(1);
+        err.status.should.equal(422);
+        err.statusText.should.equal('Bad Request');
+      });
+    });
+  });
+
+  describe('when user decides to reset options to default', function () {
+
+    it('should be able to reset options on demand', function () {
+
+      validation.options({
+        status: 422
+      });
+
+      validation.options();
+
+      var validationFn = validation(require('./validation/login'));
+      var fakeReq = {
+        body: {
+          email: "andrew.keiggmail.com",
+          password: "12356"
+        }
+      };
+
+      validationFn(fakeReq, undefined, function next (err) {
+        err.errors.length.should.equal(1);
+        err.status.should.equal(400);
+        err.statusText.should.equal('Bad Request');
+      });
+    });
+  });
+});
