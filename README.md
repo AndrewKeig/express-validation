@@ -215,7 +215,9 @@ module.exports = {
 
 ## Changelog
 0.4.1: added `options()` method to [globally override configuration](#global-options).
+
 0.4.0: `express-validation` now returns a `ValidationError`, not a simple `Error`. This offer some advantages [when writing error handlers](#distinguish-errors-from-validationerrors).  
+
 0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0 to allow the express application itself to return the error response.  So from 0.3.0 onwards, you will need to add an express error handler, and return an error response.
 
 
@@ -224,3 +226,14 @@ module.exports = {
 This work is licensed under the MIT License (see the LICENSE file).
 
 https://github.com/AndrewKeig/express-validation/blob/master/LICENSE
+
+## Contributors
+
+Valerio Coltrè
+https://github.com/mrgamer
+
+gdw2
+https://github.com/gdw2
+
+Robert Barbey
+https://github.com/rbarbey
