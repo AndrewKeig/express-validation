@@ -116,7 +116,7 @@ var ev = require('express-validation');
 // error handler
 app.use(function (err, req, res, next) {
   // specific for validation errors
-  if (err istanceof ev.ValidationError) return res.status(err.status).json(err);
+  if (err instanceof ev.ValidationError) return res.status(err.status).json(err);
 
   // other type of errors, it *might* also be a Runtime Error
   // example handling
