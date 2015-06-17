@@ -215,6 +215,8 @@ module.exports = {
 ```
 
 ## Changelog
+0.4.2: errors have now a `types` array ([full reference in Joi source](https://github.com/hapijs/joi/blob/master/lib/language.js)), similar to `messages`, useful to sum up errors for internationalization purposes.
+
 0.4.1: added `options()` method to [globally override configuration](#global-options).
 
 0.4.0: `express-validation` now returns a `ValidationError`, not a simple `Error`. This offer some advantages [when writing error handlers](#distinguish-errors-from-validationerrors).  
@@ -238,3 +240,6 @@ https://github.com/gdw2
 
 Robert Barbey
 https://github.com/rbarbey
+
+Stefan Lapers
+https://github.com/slapers
