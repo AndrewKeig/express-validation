@@ -66,6 +66,7 @@ describe('validate body', function () {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           response.errors[0].messages.length.should.equal(2);
+          response.errors[0].types.length.should.equal(2);
           done();
         });
       });
@@ -88,7 +89,9 @@ describe('validate body', function () {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(2);
           response.errors[0].messages.length.should.equal(2);
+          response.errors[0].types.length.should.equal(2);
           response.errors[1].messages.length.should.equal(2);
+          response.errors[1].types.length.should.equal(2);
           done();
         });
       });
@@ -112,6 +115,7 @@ describe('validate body', function () {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           response.errors[0].messages.length.should.equal(1);
+          response.errors[0].types.length.should.equal(1);
           done();
         });
       });

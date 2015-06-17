@@ -100,7 +100,8 @@ Running the above test will produce the following response.
       "messages": [
         "the value of password is not allowed to be empty",
         "the value of password must match the regular expression /[a-zA-Z0-9]{3,30}/"
-      ]
+      ],
+      types: [ 'any.empty', 'string.regex.base' ]
     }
   ]
 }
