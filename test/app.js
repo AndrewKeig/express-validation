@@ -5,9 +5,11 @@ var express = require('express')
   , http = require('http')
   , validation = require('./validation')
   , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
   , app = express()
 
 app.use(bodyParser.json())
+app.use(cookieParser())
 
 app.set('port', 3000);
 
@@ -37,6 +39,10 @@ app.post('/register', validate(validation.register.post), function(req, res){
 
 app.post('/options', validate(validation.options), function(req, res){
     res.json(200);
+})
+
+app.post('/logout', validate(validation.logout), function(req, res){
+    res.json(200)
 })
 
 app.use(function(err, req, res, next){
