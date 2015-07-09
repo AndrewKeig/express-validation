@@ -8,7 +8,7 @@ var validation = require('../lib/index')
 describe('validate body', function () {
 
   describe('when the request contains a valid payload', function () {
-    
+
     it('should return a 200 ok response', function(done){
 
       var login = {
@@ -29,7 +29,7 @@ describe('validate body', function () {
   });
 
   describe('when the request contains an invalid payload', function () {
-    
+
     it('should return a 400 ok response and a single error', function(done){
 
       var login = {
@@ -50,7 +50,7 @@ describe('validate body', function () {
   });
 
   describe('when the request has a missing item in payload', function () {
-    
+
     it('should return a 400 ok response and a single error', function(done){
 
       var login = {
@@ -73,7 +73,7 @@ describe('validate body', function () {
   });
 
   describe('when the request has multiple missing items in payload', function () {
-    
+
     it('should return a 400 ok response and two errors', function(done){
 
       var login = {
@@ -98,7 +98,7 @@ describe('validate body', function () {
   });
 
   describe('when the request has extra items in payload', function () {
-    
+
     it('should return a 400 ok response and one error', function(done){
 
       var login = {
