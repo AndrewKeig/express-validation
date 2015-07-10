@@ -1,7 +1,7 @@
 express-validation
 ==================
 
-express-validation is a middleware that validates the `body`, `params`, `query`and `headers` of a request and returns a response with errors; if any of the configured validation rules fail.
+express-validation is a middleware that validates the `body`, `params`, `query`, `headers` and `cookies` of a request and returns a response with errors; if any of the configured validation rules fail.
 
 [![build status](https://travis-ci.org/AndrewKeig/express-validation.svg)](http://travis-ci.org/AndrewKeig/express-validation)
 
@@ -14,20 +14,21 @@ $ npm install express-validation --save
 
 ## Supporting
 
-`express-validation` supports validating the following: 
+`express-validation` supports validating the following:
 
 - body
 - params
 - query
 - headers
+- cookies
 
 ## Setup
-In order to setup and use `express-validation` consider the following simple express application.  It has a single route; configured to use the `express-validation` middleware; it accepts as input `validation.login`; which are the validation rules we have defined for this route.
+In order to setup and use `express-validation` consider the following simple express application. It has a single route; configured to use the `express-validation` middleware; it accepts as input `validation.login`; which are the validation rules we have defined for this route.
 
 ```js
 var express = require('express')
   , validate = require('express-validation')
-  , http = require('http') 
+  , http = require('http')
   , validation = require('./validation')
   , app = express();
 
@@ -49,7 +50,7 @@ http.createServer(app);
 
 The following section defines our validation rules `validation.login`.  This is simply an object, which uses [https://github.com/spumko/joi](https://github.com/spumko/joi) to define validation rules for a request.
 
-We have defined two rules `email` and `password`.  They are encapsulated inside `body`; which is important; as this defines their location, alternatives being, `params`, `query`, `headers`.
+We have defined two rules `email` and `password`.  They are encapsulated inside `body`; which is important; as this defines their location, alternatives being, `params`, `query`, `headers` and `cookies`.
 
 ```js
 var Joi = require('joi');
@@ -62,7 +63,7 @@ module.exports = {
 };
 ```
 
-The following test, calls the route defined in our express application `/login`; it passes in a payload with an `email` and empty `password`.  
+The following test, calls the route defined in our express application `/login`; it passes in a payload with an `email` and empty `password`.
 
 ```js
 describe('when the request has a missing item in payload', function () {
@@ -108,7 +109,7 @@ Running the above test will produce the following response.
 ```
 
 ## Distinguish `Error`(s) from `ValidationError`(s)
-Since 0.4.0 `express-validation` calls `next()` with a `ValidationError`, a specific type of `Error`.  
+Since 0.4.0 `express-validation` calls `next()` with a `ValidationError`, a specific type of `Error`.
 This can be very handy when writing more complex error handlers for your Express application, a brief example follows:
 
 ```js
@@ -161,11 +162,12 @@ By default, additional items outside of the schema definition will be allowed to
 
 ```js
 module.exports.post = {
-  options : { 
-    allowUnknownBody: false, 
+  options : {
+    allowUnknownBody: false,
     allowUnknownHeaders: false,
-    allowUnknownQuery: false, 
-    allowUnknownParams: false },
+    allowUnknownQuery: false,
+    allowUnknownParams: false,
+    allowUnknownCookies: false },
   ...
 };
 ```
@@ -219,7 +221,7 @@ module.exports = {
 
 0.4.1: added `options()` method to [globally override configuration](#global-options).
 
-0.4.0: `express-validation` now returns a `ValidationError`, not a simple `Error`. This offer some advantages [when writing error handlers](#distinguish-errors-from-validationerrors).  
+0.4.0: `express-validation` now returns a `ValidationError`, not a simple `Error`. This offer some advantages [when writing error handlers](#distinguish-errors-from-validationerrors).
 
 0.3.0: prior to version 0.3.0, we returned a json error response straight out of the middleware, this changed in 0.3.0 to allow the express application itself to return the error response.  So from 0.3.0 onwards, you will need to add an express error handler, and return an error response.
 
