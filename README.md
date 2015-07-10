@@ -102,7 +102,7 @@ Running the above test will produce the following response.
         "the value of password is not allowed to be empty",
         "the value of password must match the regular expression /[a-zA-Z0-9]{3,30}/"
       ],
-      types: [ 'any.empty', 'string.regex.base' ]
+      "types": [ "any.empty", "string.regex.base" ]
     }
   ]
 }
@@ -217,6 +217,9 @@ module.exports = {
 ```
 
 ## Changelog
+
+0.4.3: added cookies validation, thanks to [@aymericbeaumet](https://github.com/aymericbeaumet).
+
 0.4.2: errors have now a `types` array ([full reference in Joi source](https://github.com/hapijs/joi/blob/master/lib/language.js)), similar to `messages`, useful to sum up errors for internationalization purposes.
 
 0.4.1: added `options()` method to [globally override configuration](#global-options).
@@ -234,14 +237,8 @@ https://github.com/AndrewKeig/express-validation/blob/master/LICENSE
 
 ## Contributors
 
-Valerio Coltrè
-https://github.com/mrgamer
-
-gdw2
-https://github.com/gdw2
-
-Robert Barbey
-https://github.com/rbarbey
-
-Stefan Lapers
-https://github.com/slapers
+  * Aymeric Beaumet https://github.com/aymericbeaumet
+  * Valerio Coltrè https://github.com/mrgamer
+  * gdw2 https://github.com/gdw2
+  * Robert Barbey https://github.com/rbarbey
+  * Stefan Lapers https://github.com/slapers
