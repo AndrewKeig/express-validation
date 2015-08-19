@@ -41,6 +41,10 @@ app.post('/options', validate(validation.options), function(req, res){
     res.json(200);
 })
 
+app.post('/defaults', validate(validation.defaults), function(req, res) {  
+  res.json(req.body);
+})
+
 app.post('/logout', validate(validation.logout), function(req, res){
     res.json(200)
 })
