@@ -236,7 +236,7 @@ This work is licensed under the MIT License (see the LICENSE file).
 https://github.com/AndrewKeig/express-validation/blob/master/LICENSE
 
 ## Contributors
-
+  * Iheanyi Ekechukwu https://github.com/iheanyi
   * Aymeric Beaumet https://github.com/aymericbeaumet
   * Valerio Coltrè https://github.com/mrgamer
   * gdw2 https://github.com/gdw2
