@@ -5,7 +5,7 @@ var validation = require('../lib/index')
 , should = require('should')
 , request = require('supertest');
 
-describe.only('set default values', function() {  
+describe('set default values', function() {  
   describe('when the values are  missing', function() {
   // Expect default values to be set
     it('should return the request with default values', function(done) {
