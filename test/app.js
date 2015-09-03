@@ -48,6 +48,9 @@ app.post('/defaults', validate(validation.defaults), function(req, res) {
 app.post('/logout', validate(validation.logout), function(req, res){
     res.json(200)
 })
+app.post('/array', validate(validation.array), function(req, res) {
+    res.json(200);
+});
 
 app.use(function(err, req, res, next){
   res.status(400).json(err);
