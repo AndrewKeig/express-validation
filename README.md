@@ -218,6 +218,10 @@ module.exports = {
 
 ## Changelog
 
+0.4.5: support for `Joi.ref` inside objects, refer to #17 for a working example
+
+0.4.4: support for Joi [`any.default`](https://github.com/hapijs/joi#anydefaultvalue-description), thanks to [@iheanyi](https://github.com/iheanyi)
+
 0.4.3: added cookies validation, thanks to [@aymericbeaumet](https://github.com/aymericbeaumet).
 
 0.4.2: errors have now a `types` array ([full reference in Joi source](https://github.com/hapijs/joi/blob/master/lib/language.js)), similar to `messages`, useful to sum up errors for internationalization purposes.
