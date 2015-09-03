@@ -218,7 +218,7 @@ module.exports = {
 
 ## Changelog
 
-0.4.5: support for `Joi.ref` inside objects, refer to #17 for a working example
+0.4.5: support for `Joi.ref` inside arrays, refer to #17 for an example
 
 0.4.4: support for Joi [`any.default`](https://github.com/hapijs/joi#anydefaultvalue-description), thanks to [@iheanyi](https://github.com/iheanyi)
 
