@@ -25,21 +25,25 @@ $ npm install express-validation --save
 ## Setup
 In order to setup and use `express-validation` consider the following simple express application. It has a single route; configured to use the `express-validation` middleware; it accepts as input `validation.login`; which are the validation rules we have defined for this route.
 
+**file**: [`test/app.js`](test/app.js)
 ```js
 var express = require('express')
   , validate = require('express-validation')
   , http = require('http')
-  , validation = require('./validation')
+  , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
   , app = express();
 
-app.use(express.bodyParser());
+app.use(bodyParser.json())
+app.use(cookieParser())
+
 app.set('port', 3000);
 
 app.post('/login', validate(validation.login), function(req, res){
     res.json(200);
 });
 
-//error handler, required as of 0.3.0
+// error handler, required as of 0.3.0
 app.use(function(err, req, res, next){
   res.status(400).json(err);
 });
@@ -52,6 +56,7 @@ The following section defines our validation rules `validation.login`.  This is 
 
 We have defined two rules `email` and `password`.  They are encapsulated inside `body`; which is important; as this defines their location, alternatives being, `params`, `query`, `headers` and `cookies`.
 
+**file**: [`test/validation/login.js`](test/validation/login.js)
 ```js
 var Joi = require('joi');
 
@@ -65,6 +70,7 @@ module.exports = {
 
 The following test, calls the route defined in our express application `/login`; it passes in a payload with an `email` and empty `password`.
 
+**file**: [`test/body.js`](test/body.js)
 ```js
 describe('when the request has a missing item in payload', function () {
   it('should return a 400 ok response and a single error', function(done){
@@ -107,6 +113,8 @@ Running the above test will produce the following response.
   ]
 }
 ```
+
+Full code for these examples is to be found in [`test/`](test/) directory.
 
 ## Distinguish `Error`(s) from `ValidationError`(s)
 Since 0.4.0 `express-validation` calls `next()` with a `ValidationError`, a specific type of `Error`.
