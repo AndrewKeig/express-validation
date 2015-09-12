@@ -22,7 +22,9 @@ app.get('/user', validate(validation.user.get), function(req, res){
 });
 
 app.get('/account/:id', validate(validation.account), function(req, res){
-    res.json(200);
+  res.json({
+    id: req.params.id
+  });
 });
 
 app.get('/search', validate(validation.search), function(req, res){
