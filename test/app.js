@@ -28,12 +28,6 @@ app.get('/user', validate(validation.user.get), function(req, res){
     res.json(200);
 });
 
-app.get('/account/:id', validate(validation.account), function(req, res){
-  res.json({
-    id: req.params.id
-  });
-});
-
 app.get('/search', validate(validation.search), function(req, res){
     res.json(200);
 });
@@ -48,7 +42,9 @@ app.post('/register', validate(validation.register.post), function(req, res){
 
 app.post('/options', validate(validation.options), function(req, res){
     res.json(200);
-})
+});
+
+app.get('/account/:id', validate(validation.account), respondWith('params'));
 
 app.post('/defaults', validate(validation.defaults), respondWith('body'));
 
