@@ -14,8 +14,7 @@ describe('validate params', function () {
         .get('/account/1')
         .expect(200)
         .end(function (err, res) {
-          var response = JSON.parse(res.text);
-          response.should.equal(200);
+          res.body.id.should.equal(1);
           done();
         });
       });
@@ -28,8 +27,7 @@ describe('validate params', function () {
         .get('/account/a')
         .expect(400)
         .end(function (err, res) {
-          var response = JSON.parse(res.text);
-          response.errors.length.should.equal(1);
+          res.body.errors.length.should.equal(1);
           done();
         });
       });
