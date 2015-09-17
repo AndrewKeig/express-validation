@@ -7,7 +7,7 @@ var validation = require('../lib/index')
 
 describe('sending', function () {
 
-  describe.skip('a parameter as string', function () {
+  describe('a parameter as string', function () {
     // Expect default values to be set
     it('should return it as Number, as Joi parses it', function(done) {
       request(app)
