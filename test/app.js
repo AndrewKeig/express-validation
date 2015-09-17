@@ -13,6 +13,13 @@ app.use(cookieParser())
 
 app.set('port', 3000);
 
+// generates a response function sending back to user the specified req[key]
+function respondWith (key) {
+  return function (req, res) {
+    res.json(req[key]);
+  };
+}
+
 app.post('/login', validate(validation.login), function(req, res){
     res.json(200);
 });
@@ -41,9 +48,13 @@ app.post('/options', validate(validation.options), function(req, res){
     res.json(200);
 })
 
-app.post('/defaults', validate(validation.defaults), function(req, res) {  
-  res.json(req.body);
-})
+app.post('/defaults', validate(validation.defaults), respondWith('body'));
+
+app.get('/parsing/params/:id?', validate(validation.parsing.params), respondWith('params'));
+app.get('/parsing/query', validate(validation.parsing.query), respondWith('query'));
+app.post('/parsing/body', validate(validation.parsing.body), respondWith('body'));
+app.get('/parsing/headers', validate(validation.parsing.headers), respondWith('headers'));
+app.get('/parsing/cookies', validate(validation.parsing.cookies), respondWith('cookies'));
 
 app.post('/logout', validate(validation.logout), function(req, res){
     res.json(200)

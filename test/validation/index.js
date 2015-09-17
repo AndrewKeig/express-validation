@@ -1,11 +1,12 @@
 'use strict';
 
-exports.login = require('./login');
-exports.user = require('./user');
-exports.search = require('./search');
 exports.account = require('./account');
-exports.register = require('./register');
-exports.options = require('./options');
-exports.logout = require('./logout');
-exports.defaults = require('./defaults');
 exports.array = require('./array');
+exports.defaults = require('./defaults');
+exports.login = require('./login');
+exports.logout = require('./logout');
+exports.options = require('./options');
+exports.parsing = require('./parsing');
+exports.register = require('./register');
+exports.search = require('./search');
+exports.user = require('./user');
