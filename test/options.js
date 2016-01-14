@@ -12,8 +12,8 @@ describe('schema options', function () {
     it('should return a 400 ok response and "Bad Request" as message', function (done) {
 
       var login = {
-        email: "andrew.keiggmail.com",
-        password: "12356"
+        email: 'andrew.keiggmail.com',
+        password: '12356'
       };
 
       request(app)
@@ -46,7 +46,7 @@ describe('schema options', function () {
           done();
         });
     });
-  })
+  });
 });
 
 describe('global options', function () {
@@ -62,8 +62,8 @@ describe('global options', function () {
       var validationFn = validation(require('./validation/login'));
       var fakeReq = {
         body: {
-          email: "andrew.keiggmail.com",
-          password: "12356"
+          email: 'andrew.keiggmail.com',
+          password: '12356'
         }
       };
 
@@ -88,8 +88,8 @@ describe('global options', function () {
       var validationFn = validation(require('./validation/login'));
       var fakeReq = {
         body: {
-          email: "andrew.keiggmail.com",
-          password: "12356"
+          email: 'andrew.keiggmail.com',
+          password: '12356'
         }
       };
 

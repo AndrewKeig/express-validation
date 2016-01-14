@@ -8,7 +8,7 @@ var validation = require('../lib/index')
 describe('validate headers', function () {
 
   describe('when the request contains a valid header', function () {
-    it('should return a 200 ok response', function(done){
+    it('should return a 200 ok response', function (done) {
 
       request(app)
         .get('/user')
@@ -17,14 +17,14 @@ describe('validate headers', function () {
         .expect(200)
         .end(function (err, res) {
           var response = JSON.parse(res.text);
-          response.should.equal(200)
+          response.should.equal(200);
           done();
         });
-      });
+    });
   });
 
   describe('when the request contains an invalid header', function () {
-    it('should return a 200 ok response', function(done){
+    it('should return a 200 ok response', function (done) {
 
       request(app)
         .get('/user')
@@ -38,6 +38,6 @@ describe('validate headers', function () {
           response.errors[0].types.length.should.equal(1);
           done();
         });
-      });
+    });
   });
 });

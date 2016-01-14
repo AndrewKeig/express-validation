@@ -1,19 +1,17 @@
 'use strict';
-
-var validation = require('../lib/index')
-, app = require('./app')
-, should = require('should')
-, request = require('supertest');
+require('should');
+var app = require('./app');
+var request = require('supertest');
 
 describe('validate body', function () {
 
   describe('when the request contains a valid payload', function () {
 
-    it('should return a 200 ok response', function(done){
+    it('should return a 200 ok response', function (done) {
 
       var login = {
-          email: "andrew.keig@gmail.com",
-          password: "12356"
+        email: 'andrew.keig@gmail.com',
+        password: '12356'
       };
 
       request(app)
@@ -22,19 +20,19 @@ describe('validate body', function () {
         .expect(200)
         .end(function (err, res) {
           var response = JSON.parse(res.text);
-          response.should.equal(200)
+          response.should.equal(200);
           done();
         });
-      });
+    });
   });
 
   describe('when the request contains an invalid payload', function () {
 
-    it('should return a 400 ok response and a single error', function(done){
+    it.only('should return a 400 ok response and a single error', function (done) {
 
       var login = {
-          email: "andrew.keiggmail.com",
-          password: "12356"
+        email: 'andrew.keiggmail.com',
+        password: '12356'
       };
 
       request(app)
@@ -42,20 +40,21 @@ describe('validate body', function () {
         .send(login)
         .expect(400)
         .end(function (err, res) {
+          console.log(res.text);
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           done();
         });
-      });
+    });
   });
 
   describe('when the request has a missing item in payload', function () {
 
-    it('should return a 400 ok response and a single error', function(done){
+    it('should return a 400 ok response and a single error', function (done) {
 
       var login = {
-          email: "andrew.keig@gmail.com",
-          password: ""
+        email: 'andrew.keig@gmail.com',
+        password: ''
       };
 
       request(app)
@@ -69,16 +68,16 @@ describe('validate body', function () {
           response.errors[0].types.length.should.equal(2);
           done();
         });
-      });
+    });
   });
 
   describe('when the request has multiple missing items in payload', function () {
 
-    it('should return a 400 ok response and two errors', function(done){
+    it('should return a 400 ok response and two errors', function (done) {
 
       var login = {
-          email: "",
-          password: ""
+        email: '',
+        password: ''
       };
 
       request(app)
@@ -94,17 +93,17 @@ describe('validate body', function () {
           response.errors[1].types.length.should.equal(2);
           done();
         });
-      });
+    });
   });
 
   describe('when the request has extra items in payload', function () {
 
-    it('should return a 400 ok response and one error', function(done){
+    it('should return a 400 ok response and one error', function (done) {
 
       var login = {
-          email: "andrew.keig@gmail.com",
-          password: "12356",
-          token: "1234"
+        email: 'andrew.keig@gmail.com',
+        password: '12356',
+        token: '1234'
       };
 
       request(app)
@@ -118,6 +117,6 @@ describe('validate body', function () {
           response.errors[0].types.length.should.equal(1);
           done();
         });
-      });
+    });
   });
 });

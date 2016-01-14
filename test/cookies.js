@@ -1,15 +1,13 @@
 'use strict';
-
-var validation = require('../lib/index')
-, app = require('./app')
-, should = require('should')
-, request = require('supertest');
+require('should');
+var app = require('./app');
+var request = require('supertest');
 
 describe('validate cookies', function () {
 
   describe('when the request contains a valid payload', function () {
 
-    it('should return a 200 ok response', function(done){
+    it('should return a 200 ok response', function (done) {
 
       request(app)
         .post('/logout')
@@ -18,15 +16,15 @@ describe('validate cookies', function () {
         .expect(200)
         .end(function (err, res) {
           var response = JSON.parse(res.text);
-          response.should.equal(200)
+          response.should.equal(200);
           done();
         });
-      });
+    });
   });
 
   describe('when the request contains an invalid payload', function () {
 
-    it('should return a 400 ok response and a single error', function(done){
+    it('should return a 400 ok response and a single error', function (done) {
 
       request(app)
         .post('/logout')
@@ -38,12 +36,12 @@ describe('validate cookies', function () {
           response.errors.length.should.equal(1);
           done();
         });
-      });
+    });
   });
 
   describe('when the request has a missing item in payload', function () {
 
-    it('should return a 400 ok response and a single error', function(done){
+    it('should return a 400 ok response and a single error', function (done) {
 
       request(app)
         .post('/logout')
@@ -57,12 +55,12 @@ describe('validate cookies', function () {
           response.errors[0].types.length.should.equal(1);
           done();
         });
-      });
+    });
   });
 
   describe('when the request has multiple missing items in payload', function () {
 
-    it('should return a 400 ok response and two errors', function(done){
+    it('should return a 400 ok response and two errors', function (done) {
 
       request(app)
         .post('/login')
@@ -77,12 +75,12 @@ describe('validate cookies', function () {
           response.errors[1].types.length.should.equal(1);
           done();
         });
-      });
+    });
   });
 
   describe('when the request has extra items in payload', function () {
 
-    it('should return a 400 ok response and one error', function(done){
+    it('should return a 400 ok response and one error', function (done) {
 
       request(app)
         .post('/logout')
@@ -96,6 +94,6 @@ describe('validate cookies', function () {
           response.errors[0].types.length.should.equal(1);
           done();
         });
-      });
+    });
   });
 });

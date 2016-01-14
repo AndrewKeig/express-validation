@@ -1,7 +1,6 @@
 'use strict';
-
-var validation = require('../lib/index')
-  , should = require('should');
+require('should');
+var validation = require('../lib/index');
 
 describe('when library throws an error', function () {
 
@@ -9,8 +8,8 @@ describe('when library throws an error', function () {
     var validationHandler = validation(require('./validation/login'));
     var fakeReq = {
       body: {
-        email: "andrew.keiggmail.com",
-        password: "12356"
+        email: 'andrew.keiggmail.com',
+        password: '12356'
       }
     };
 
@@ -26,8 +25,8 @@ describe('when library throws an error', function () {
     var validationHandler = validation(require('./validation/login'));
     var fakeReq = {
       body: {
-        email: "andrew.keiggmail.com",
-        password: "12356"
+        email: 'andrew.keiggmail.com',
+        password: '12356'
       }
     };
 
@@ -43,8 +42,8 @@ describe('when library throws an error', function () {
     var validationHandler = validation(require('./validation/login'));
     var fakeReq = {
       body: {
-        email: "andrew.keiggmail.com",
-        password: "12356"
+        email: 'andrew.keiggmail.com',
+        password: '12356'
       }
     };
 

@@ -9,7 +9,7 @@ describe('sending', function () {
 
   describe('a parameter as string', function () {
     // Expect default values to be set
-    it('should return it as Number, as Joi parses it', function(done) {
+    it('should return it as Number, as Joi parses it', function (done) {
       request(app)
       .get('/parsing/params/5')
       .expect(200)
@@ -22,7 +22,7 @@ describe('sending', function () {
   });
 
   describe('a query parameter as string', function () {
-    it('should return it as Number, as Joi parses it', function(done) {
+    it('should return it as Number, as Joi parses it', function (done) {
       request(app)
       .get('/parsing/query?id=5')
       .expect(200)
@@ -35,7 +35,7 @@ describe('sending', function () {
   });
 
   describe('a body containing a Number', function () {
-    it('should return it as Number, as Joi does not alter it', function(done) {
+    it('should return it as Number, as Joi does not alter it', function (done) {
       request(app)
       .post('/parsing/body')
       .send({ id: 5 })
@@ -49,7 +49,7 @@ describe('sending', function () {
   });
 
   describe('an header as string', function () {
-    it('should return it as Number, as Joi parses it', function(done) {
+    it('should return it as Number, as Joi parses it', function (done) {
       request(app)
       .get('/parsing/headers')
       .set('id', '5')
@@ -63,7 +63,7 @@ describe('sending', function () {
   });
 
   describe('a query parameter as string', function () {
-    it('should return it as Number, as Joi parses it', function(done) {
+    it('should return it as Number, as Joi parses it', function (done) {
       request(app)
       .get('/parsing/cookies')
       .set('Cookie', 'id=5;')

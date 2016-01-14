@@ -9,11 +9,11 @@ describe('validate body and flatten errors', function () {
 
   describe('when the request has multiple missing items in payload', function () {
     
-    it('should return a 400 ok response and two errors flattened', function(done){
+    it('should return a 400 ok response and two errors flattened', function (done) {
 
       var register = {
-          email: "",
-          password: ""
+        email: '',
+        password: ''
       };
 
       request(app)
@@ -25,6 +25,6 @@ describe('validate body and flatten errors', function () {
           response.length.should.equal(4);
           done();
         });
-      });
+    });
   });
 });

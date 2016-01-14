@@ -8,4 +8,4 @@ module.exports = {
     id: Joi.string().regex(/^[0-9]+$/).required(),
     session: Joi.string().regex(/^[a-zA-Z0-9]{16}$/).required()
   }
-}
+};
