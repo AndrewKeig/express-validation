@@ -28,7 +28,7 @@ describe('validate body', function () {
 
   describe('when the request contains an invalid payload', function () {
 
-    it.only('should return a 400 ok response and a single error', function (done) {
+    it('should return a 400 ok response and a single error', function (done) {
 
       var login = {
         email: 'andrew.keiggmail.com',
@@ -40,7 +40,6 @@ describe('validate body', function () {
         .send(login)
         .expect(400)
         .end(function (err, res) {
-          console.log(res.text);
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           done();

@@ -116,6 +116,31 @@ Running the above test will produce the following response.
 
 Full code for these examples is to be found in [`test/`](test/) directory.
 
+## `req` objects gets parsed
+When `Joi` validates the `body`, `params`, `query`, `headers` or `cookies` it returns it as Javascript Object.
+
+Example without `express-validation`:
+```
+app.post('/login', function(req, res){
+  console.log(req.body); // => '{ "email": "user@domain", "password": "pwd" }'
+  res.json(200);
+});
+```
+
+Example with `express-validation`:
+```
+var validate = require('express-validation');
+var validation = require('./test/validation/login.js');
+
+app.post('/login', validate(validation.login), function(req, res){
+  console.log(req.body); // => { email: "user@domain", password: "pwd" }
+  res.json(200);
+});
+```
+
+The difference might seem very slight, but it's a big deal.
+All parts of a `request` will be either parsed, or throw errors.
+
 ## Distinguish `Error`(s) from `ValidationError`(s)
 Since 0.4.0 `express-validation` calls `next()` with a `ValidationError`, a specific type of `Error`.
 This can be very handy when writing more complex error handlers for your Express application, a brief example follows:
