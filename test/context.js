@@ -3,7 +3,7 @@ var validation = require('../lib/index')
 , should = require('should')
 , request = require("supertest");
 
-describe('for validating  array values', function() {
+describe('for validating context values', function() {
   describe('when the schema contains a reference to the request object', function() {
     it('should return a 200 ok response', function(done) {
       request(app)
