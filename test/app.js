@@ -61,6 +61,10 @@ app.post('/array', validate(validation.array), function(req, res) {
     res.json(200);
 });
 
+app.post('/context/:id', validate(validation.context), function(req, res) {
+    res.json(200);
+});
+
 app.use(function(err, req, res, next){
   res.status(400).json(err);
 });

@@ -23,7 +23,8 @@
   },
   "scripts": {
     "pretest": "jshint lib",
-    "test": "jshint lib && mocha -R spec"
+    "test": "jshint lib && mocha -R spec",
+    "test-watch": "jshint lib && mocha -R spec --watch "
   },
   "engines": {
     "node": "*"
