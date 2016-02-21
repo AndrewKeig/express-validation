@@ -29,7 +29,8 @@
   "license": "MIT",
   "scripts": {
     "pretest": "eslint lib",
-    "test": "eslint lib && mocha -R spec -b"
+    "test": "eslint lib && mocha -R spec -b",
+    "test-watch": "jshint lib && mocha -R spec --watch "
   },
   "engines": {
     "node": "*"

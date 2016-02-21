@@ -141,6 +141,65 @@ app.post('/login', validate(validation.login), function(req, res){
 The difference might seem very slight, but it's a big deal.
 All parts of a `request` will be either parsed, or throw errors.
 
+## Using the Joi Context
+The `Express` request object is passed as the context for the Joi validation. This allows you to reference other parts of the request in your validations.
+
+Example:
+Validate that the ID in the request params is the same ID as in the body for the endpoint `/context/:id`.
+
+**file**: [`test/validation/context.js`](test/validation/context.js)
+```js
+var Joi = require('joi');
+
+module.exports = {
+  body: {
+      id: Joi.string().valid(Joi.ref('$params.id')).required()
+  }
+};
+```
+
+The following test calls the `/context/1` route in the express application; It passes a payload with the an `id` of '2'.
+
+**file**: [`test/context.js`](test/context.js)
+```js
+  describe('when the schema contains an invalid reference to the request object', function() {
+    it('should return a 400 response', function(done) {
+      request(app)
+        .post('/context/1')
+        .send({id: '2'})
+        .expect(400)
+        .end(function(err, res) {
+          if(err) {
+            return done(err);
+          }
+          done();
+        });
+    });
+  });
+});
+```
+
+Running the above test will produce the following response:
+
+```json
+{
+  "status": 400,
+  "statusText": "Bad Request",
+  "errors": [
+    {
+      "field": "id",
+      "location": "body",
+      "messages": [
+        "\"id\" must be one of [context:params.id]"
+      ],
+      "types": [
+        "any.allowOnly"
+      ]
+    }
+  ]
+}
+```
+
 ## Distinguish `Error`(s) from `ValidationError`(s)
 Since 0.4.0 `express-validation` calls `next()` with a `ValidationError`, a specific type of `Error`.
 This can be very handy when writing more complex error handlers for your Express application, a brief example follows:
