@@ -251,6 +251,8 @@ module.exports = {
 
 ## Changelog
 
+0.5.0: `req` objects gets parsed. `Joi` validates the `body`, `params`, `query`, `headers` or `cookies` and returns a Javascript Object.
+
 0.4.5: support for `Joi.ref` inside arrays, refer to #17 for an example
 
 0.4.4: support for Joi [`any.default`](https://github.com/hapijs/joi#anydefaultvalue-description), thanks to [@iheanyi](https://github.com/iheanyi)
@@ -276,7 +278,7 @@ https://github.com/AndrewKeig/express-validation/blob/master/LICENSE
   * Christian Holm https://github.com/holm
   * Iheanyi Ekechukwu https://github.com/iheanyi
   * Aymeric Beaumet https://github.com/aymericbeaumet
-  * Valerio Coltrè https://github.com/mrgamer
+  * Valerio Coltrè https://github.com/colthreepv
   * gdw2 https://github.com/gdw2
   * Robert Barbey https://github.com/rbarbey
   * Stefan Lapers https://github.com/slapers
