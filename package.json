@@ -4,24 +4,25 @@
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates the body, params, query, headers and cookies of a request and returns a response with errors; if any of the configured validation rules fail.",
   "homepage": "https://github.com/andrewkeig/express-validation",
-  "contributors": [{
-    "name": "Valerio Coltrè",
-    "email": "mister.gamer@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Valerio Coltrè",
+      "email": "mister.gamer@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewkeig/express-validation"
   },
   "dependencies": {
-    "joi": "^7.1.0",
+    "joi": "^8.0.2",
     "lodash": "^4.0.0"
   },
   "devDependencies": {
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
-    "eslint": "^1.10.3",
+    "eslint": "^2.2.0",
     "express": "~4.x",
-    "jshint": "^2.9.1-rc3",
     "mocha": "^2.3.4",
     "should": "^8.1.1",
     "supertest": "^1.1.0"
