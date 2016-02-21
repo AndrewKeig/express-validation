@@ -22,7 +22,7 @@ describe('for validating  array values', function () {
     it('should return a 400 response', function (done) {
       request(app)
         .post('/array')
-        .send({ numbers: [1, 2, 3], validate_numbers:[4, 5] })
+        .send({ numbers: [1, 2, 3], validate_numbers: [4, 5] })
         .expect(400)
         .end(function (err, res) {
           if (err) {

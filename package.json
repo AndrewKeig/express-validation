@@ -1,6 +1,6 @@
 {
   "name": "express-validation",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates the body, params, query, headers and cookies of a request and returns a response with errors; if any of the configured validation rules fail.",
   "homepage": "https://github.com/andrewkeig/express-validation",
@@ -31,7 +31,7 @@
   "scripts": {
     "pretest": "eslint lib",
     "test": "eslint lib && mocha -R spec -b",
-    "test-watch": "jshint lib && mocha -R spec --watch "
+    "test-watch": "eslint lib && mocha -R spec --watch "
   },
   "engines": {
     "node": "*"
