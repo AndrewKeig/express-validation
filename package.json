@@ -1,27 +1,31 @@
 {
   "name": "express-validation",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates the body, params, query, headers and cookies of a request and returns a response with errors; if any of the configured validation rules fail.",
   "homepage": "https://github.com/andrewkeig/express-validation",
-  "contributors": [{
-    "name": "Valerio Coltrè",
-    "email": "mister.gamer@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Valerio Coltre",
+      "email": "mister.gamer@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewkeig/express-validation"
   },
   "dependencies": {
-    "joi": "^7.1.0",
-    "lodash": "^4.0.0"
+    "lodash": "^4.9.0"
+  },
+  "peerDependencies": {
+    "joi": "^8.0.5"
   },
   "devDependencies": {
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
-    "eslint": "^1.10.3",
+    "eslint": "^2.7.0",
     "express": "~4.x",
-    "jshint": "^2.9.1-rc3",
+    "joi": "^8.0.5",
     "mocha": "^2.3.4",
     "should": "^8.1.1",
     "supertest": "^1.1.0"
@@ -29,10 +33,7 @@
   "license": "MIT",
   "scripts": {
     "pretest": "eslint lib",
-    "test": "eslint lib && mocha -R spec -b"
-  },
-  "engines": {
-    "node": "*"
+    "test": "mocha -R spec -b"
   },
   "main": "./lib/index",
   "keywords": [

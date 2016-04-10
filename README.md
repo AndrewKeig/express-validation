@@ -251,6 +251,8 @@ module.exports = {
 
 ## Changelog
 
+0.6.0: `Joi` dependency moved to `peerDependencies`, it has to be installed at the same depth as `express-validation`. This is to avoid having to bump library version to update `Joi`.
+
 0.5.0: `req` objects gets parsed. `Joi` validates the `body`, `params`, `query`, `headers` or `cookies` and returns a Javascript Object.
 
 0.4.5: support for `Joi.ref` inside arrays, refer to #17 for an example
