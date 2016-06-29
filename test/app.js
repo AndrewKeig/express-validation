@@ -41,6 +41,7 @@ app.get('/parsing/cookies', validate(validation.parsing.cookies), respondWith('c
 
 app.post('/logout', validate(validation.logout), respond200);
 app.post('/array', validate(validation.array), respond200);
+app.post('/context/:id', validate(validation.context), respond200);
 
 // default errorhandler for express-validation
 app.use(function (err, req, res, next) {
