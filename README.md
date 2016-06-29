@@ -116,7 +116,9 @@ Running the above test will produce the following response.
 
 Full code for these examples is to be found in [`test/`](test/) directory.
 
-## `req` objects gets parsed
+## How to use
+
+### `req` objects gets parsed
 When `Joi` validates the `body`, `params`, `query`, `headers` or `cookies` it returns it as Javascript Object.
 
 Example without `express-validation`:
@@ -141,8 +143,9 @@ app.post('/login', validate(validation.login), function(req, res){
 The difference might seem very slight, but it's a big deal.
 All parts of a `request` will be either parsed, or throw errors.
 
-## Using the Joi Context
-The `Express` request object is passed as the context for the Joi validation. This allows you to reference other parts of the request in your validations.
+### Accessing the request context
+Enabling a configurable flag, `contextRequest`, the Joi validation can access  parts of the node `http.ClientRequest`.
+This allows you to reference other parts of the request in your validations, as follows:
 
 Example:
 Validate that the ID in the request params is the same ID as in the body for the endpoint `/context/:id`.
@@ -200,7 +203,21 @@ Running the above test will produce the following response:
 }
 ```
 
-## Distinguish `Error`(s) from `ValidationError`(s)
+### Working with headers
+When creating a validation object that checks `req.headers`; please remember to use `lowercase` names; node.js will convert incoming headers to lowercase:
+
+```js
+var Joi = require('joi');
+
+module.exports = {
+  headers: {
+    accesstoken: Joi.string().required(),
+    userid : Joi.string().required()
+  }
+};
+```
+
+### Distinguish `Error`(s) from `ValidationError`(s)
 Since 0.4.0 `express-validation` calls `next()` with a `ValidationError`, a specific type of `Error`.
 This can be very handy when writing more complex error handlers for your Express application, a brief example follows:
 
@@ -224,45 +241,24 @@ app.use(function (err, req, res, next) {
 
 ## Options
 
-### Simple error response
-If you would prefer to simply return a list of errors; you can flatten this structure; by passing an options array; with `flatten` set to `true`:
-
-```js
-module.exports.post = {
-  options : { flatten : true },
-  body: {
-    email: Joi.string().email().required(),
-    password: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
-  }
-};
-```
-
-This will produce the following response; an array of strings.
-
-
-```js
-[
-  "the value of password is not allowed to be empty",
-  "the value of password must match the regular expression /[a-zA-Z0-9]{3,30}/"
-]
-
-```
-
-### Unknown schema items
-
-By default, additional items outside of the schema definition will be allowed to pass validation.  To enforce strict checking, set the `allowUnknown\*` options as follows:
+### Unknown schema fields - strict checking
+By default, additional fields outside of the schema definition will be ignored by validation.  
+To enforce strict checking, set the `allowUnknown\*` options as follows:
 
 ```js
 module.exports.post = {
   options : {
-    allowUnknownBody: false,
-    allowUnknownHeaders: false,
-    allowUnknownQuery: false,
-    allowUnknownParams: false,
-    allowUnknownCookies: false },
+    allowUnknownBody: true,
+    allowUnknownHeaders: true,
+    allowUnknownQuery: true,
+    allowUnknownParams: true,
+    allowUnknownCookies: true
+  },
   ...
 };
 ```
+
+With strict checking enabled, if additional fields gets sent through validation, they will be raise a `ValidationError`.
 
 ### Specific Status codes and text
 By default, the status code is set to `400`, and status text to `Bad Request`, you can change this behaviour with the following:
@@ -293,22 +289,24 @@ ev.options();
 ```
 Thanks to node `require()` caching, all the other `express-validation` instances also have the same set of global options.
 
-## Working with headers
-When creating a validation object that checks `req.headers`; please remember to use `lowercase` names; node.js will convert incoming headers to lowercase:
+### Full options list
+Recap of all options usable both as global or per-validation basis.
 
-
-```js
-var Joi = require('joi');
-
-module.exports = {
-  headers: {
-    accesstoken: Joi.string().required(),
-    userid : Joi.string().required()
-  }
-};
-```
+**allowUnknownBody**: boolean - _default_: `true`  
+**allowUnknownHeaders**: boolean - _default_: `true`  
+**allowUnknownQuery**: boolean - _default_: `true`  
+**allowUnknownParams**: boolean - _default_: `true`  
+**allowUnknownCookies**: boolean - _default_: `true`  
+**status**: integer - _default_: `400`  
+**statusText**: string - _default_: `'Bad Request'`  
+**contextRequest**: boolean - _default_: `false`
 
 ## Changelog
+
+1.0.0:
+ - Removed `flatten` documentation as the functionality was broken since 0.5.0 and nobody opened an issue about it (nor there were tests for that option).
+ - Added `contextRequest` option from [#25](https://github.com/AndrewKeig/express-validation/pull/25), thanks to [@amazzeo](https://github.com/amazzeo)
+ - A bit of documentation revamp, feedback is welcome
 
 0.6.0: `Joi` dependency moved to `peerDependencies`, it has to be installed at the same depth as `express-validation`. This is to avoid having to bump library version to update `Joi`.
 
@@ -343,3 +341,4 @@ https://github.com/AndrewKeig/express-validation/blob/master/LICENSE
   * gdw2 https://github.com/gdw2
   * Robert Barbey https://github.com/rbarbey
   * Stefan Lapers https://github.com/slapers
+  * Alex Mazzeo https://github.com/amazzeo

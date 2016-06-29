@@ -1,9 +1,9 @@
 'use strict';
 
-var validation = require('../lib/index')
-  , app = require('./app')
-  , should = require('should')
-  , request = require('supertest');
+var validation = require('../lib/index');
+var app = require('./app');
+var request = require('supertest');
+require('should');
 
 describe('schema options', function () {
 
