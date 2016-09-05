@@ -18,14 +18,14 @@
     "lodash": "^4.9.0"
   },
   "peerDependencies": {
-    "joi": "^8.0.5"
+    "joi": "^9.0.4"
   },
   "devDependencies": {
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
     "eslint": "^2.7.0",
     "express": "~4.x",
-    "joi": "^8.0.5",
+    "joi": "^9.0.4",
     "mocha": "^2.3.4",
     "should": "^9.0.2",
     "supertest": "^1.1.0"
