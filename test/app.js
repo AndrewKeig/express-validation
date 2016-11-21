@@ -45,6 +45,7 @@ app.post('/context/:id', validate(validation.context), respond200);
 
 app.post('/strip', validate(validation.strip), respondWith('body'));
 app.post('/rename', validate(validation.rename), respondWith('body'));
+app.post('/empty', validate(validation.empty), respondWith('body'));
 
 // default errorhandler for express-validation
 app.use(function (err, req, res, next) {

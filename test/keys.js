@@ -33,4 +33,23 @@ describe('for schema that remove keys', function () {
         });
     });
   });
+  
+  describe('when the schema contains an .empty() predicate', function () {
+    it('should remove that key when it is empty', function (done) {
+      request(app)
+        .post('/empty')
+        .send(
+        { 
+          iAmEmpty: '',
+          iAmNotEmpty: 'Text'
+        })
+        .expect(200)
+        .end(function (err, res) {
+          var response = JSON.parse(res.text);
+          response.should.not.have.property('iAmEmpty');
+          response.iAmNotEmpty.should.be.equal('Text');
+          done();
+        });
+    });
+  });
 });

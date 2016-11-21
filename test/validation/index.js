@@ -13,3 +13,4 @@ exports.search = require('./search');
 exports.user = require('./user');
 exports.strip = require('./strip');
 exports.rename = require('./rename');
+exports.empty = require('./empty');
