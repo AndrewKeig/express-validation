@@ -1,6 +1,6 @@
 var Joi = require('joi');
 
-var generateUsername = function (context) {
+function generateUsername (context) {
   return context.firstname.toLowerCase() + '-' + context.lastname.toLowerCase();
 };
 

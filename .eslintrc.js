@@ -1,7 +1,11 @@
 module.exports = {
-  eslint: 'recommended',
+  eslint: 'eslint:recommended',
   env: {
-    node: true
+    node: true,
+    es6: true,
+  },
+  ecmaFeatures: {
+    blockBindings: true,
   },
   rules: {
     'brace-style': [2, '1tbs'],
@@ -18,9 +22,10 @@ module.exports = {
     'no-shadow': 0,
     'no-undef': 1,
     'no-underscore-dangle': 0,
-    'no-unused-vars': [1, { vars: 'local', args: 'none' }],
+    'no-unused-vars': [1, { vars: 'local', args: 'none', varsIgnorePattern: 'should' }],
     'no-use-before-define': [2, 'nofunc'],
     'object-curly-spacing': [2, 'always'],
+    'one-var': [2, 'never'],
     'keyword-spacing': [2, { after: true, before: true }],
     'space-before-blocks': 2,
     'space-before-function-paren': 2,

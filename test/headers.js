@@ -1,9 +1,8 @@
 'use strict';
 
-var validation = require('../lib/index')
-, app = require('./app')
-, should = require('should')
-, request = require('supertest');
+const should = require('should');
+const request = require('supertest');
+const app = require('./app');
 
 describe('validate headers', function () {
 

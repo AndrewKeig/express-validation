@@ -1,14 +1,13 @@
 'use strict';
 
-var validation = require('../lib/index')
-, app = require('./app')
-, should = require('should')
-, request = require('supertest');
+const should = require('should');
+const request = require('supertest');
+const app = require('./app');
 
 describe('validate a mixture of request types', function () {
 
   describe('when the request contains a valid payload and headers', function () {
-    
+
     it('should return a 200 ok response', function (done) {
 
       var login = {
@@ -31,7 +30,7 @@ describe('validate a mixture of request types', function () {
   });
 
   describe('when the request contains a valid payload and headers, with invalid parameter', function () {
-    
+
     it('should return a 200 ok response', function (done) {
 
       var login = {
@@ -57,7 +56,7 @@ describe('validate a mixture of request types', function () {
   });
 
   describe('when the request contains a missing payload and valid headers', function () {
-    
+
     it('should return a 400 ok response and two errors', function (done) {
 
       var login = {
@@ -82,7 +81,7 @@ describe('validate a mixture of request types', function () {
   });
 
   describe('when the request contains a valid payload and missing headers', function () {
-    
+
     it('should return a 400 ok response and two errors', function (done) {
 
       var login = {

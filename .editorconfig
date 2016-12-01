@@ -1,0 +1,17 @@
+# EditorConfig is awesome: http://editorconfig.org/
+# Please, read it!
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Markdown make use of trailing whitespace, don't trim it!
+[*.md]
+trim_trailing_whitespace = false

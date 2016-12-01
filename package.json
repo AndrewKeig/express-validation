@@ -18,17 +18,17 @@
     "lodash": "^4.9.0"
   },
   "peerDependencies": {
-    "joi": "^9.0.4"
+    "joi": "^10.0.1"
   },
   "devDependencies": {
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
-    "eslint": "^2.7.0",
+    "eslint": "^3.11.1",
     "express": "~4.x",
-    "joi": "^9.0.4",
-    "mocha": "^2.3.4",
-    "should": "^9.0.2",
-    "supertest": "^1.1.0"
+    "joi": "^10.0.1",
+    "mocha": "^3.2.0",
+    "should": "^11.1.1",
+    "supertest": "^2.0.1"
   },
   "license": "MIT",
   "scripts": {
