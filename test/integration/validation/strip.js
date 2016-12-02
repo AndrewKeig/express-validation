@@ -1,7 +1,7 @@
-var Joi = require('joi');
+var Joi = require('joi')
 
 module.exports = {
   body: {
-    stripMe: Joi.any().strip()
-  }
-};
+    stripMe: Joi.any().strip(),
+  },
+}

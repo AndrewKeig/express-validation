@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-var Joi = require('joi');
+var Joi = require('joi')
 
 module.exports = {
   options: {
     status: 422,
-    statusText: 'Unprocessable Entity'
+    statusText: 'Unprocessable Entity',
   },
   body: {
-    option: Joi.string().required()
-  }
-};
+    option: Joi.string().required(),
+  },
+}

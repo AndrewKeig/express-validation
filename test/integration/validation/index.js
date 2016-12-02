@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
-exports.account = require('./account');
-exports.array = require('./array');
-exports.context = require('./context');
-exports.defaults = require('./defaults');
-exports.login = require('./login');
-exports.logout = require('./logout');
-exports.options = require('./options');
-exports.parsing = require('./parsing');
-exports.register = require('./register');
-exports.search = require('./search');
-exports.user = require('./user');
-exports.strip = require('./strip');
-exports.rename = require('./rename');
-exports.empty = require('./empty');
+exports.account = require('./account')
+exports.array = require('./array')
+exports.context = require('./context')
+exports.defaults = require('./defaults')
+exports.login = require('./login')
+exports.logout = require('./logout')
+exports.options = require('./options')
+exports.parsing = require('./parsing')
+exports.register = require('./register')
+exports.search = require('./search')
+exports.user = require('./user')
+exports.strip = require('./strip')
+exports.rename = require('./rename')
+exports.empty = require('./empty')
