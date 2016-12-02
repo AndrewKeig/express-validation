@@ -8,7 +8,7 @@ const util = require('util')
 const ValidationError = require('../lib/validation-error')
 
 function doSomethingBad () {
-  throw new ValidationError(['It went bad!'], 42)
+  throw new ValidationError(['It went bad!'])
 }
 
 describe('Check that ValidationError is correctly subclassed', () => {
