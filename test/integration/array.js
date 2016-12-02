@@ -30,6 +30,6 @@ describe('for validating  array values', function () {
           }
           done();
         });
-    }); 
+    });
   });
 });

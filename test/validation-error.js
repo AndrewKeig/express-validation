@@ -36,7 +36,7 @@ describe('Check that ValidationError is correctly subclassed', () => {
       assert.strictEqual(err.toString(), JSON.stringify({ errors: ['It went bad!'] }));
 
       // The stack should start with the default error message formatting
-      assert.strictEqual(err.stack.split('\n')[0], 'ValidationError');
+      assert.strictEqual(err.stack.split('\n')[0], 'ValidationError: validation error');
 
       // The first stack frame should be the function where the error was thrown.
       assert.strictEqual(err.stack.split('\n')[1].indexOf('doSomethingBad'), 7);
