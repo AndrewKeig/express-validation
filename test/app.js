@@ -43,6 +43,10 @@ app.post('/logout', validate(validation.logout), respond200);
 app.post('/array', validate(validation.array), respond200);
 app.post('/context/:id', validate(validation.context), respond200);
 
+app.post('/strip', validate(validation.strip), respondWith('body'));
+app.post('/rename', validate(validation.rename), respondWith('body'));
+app.post('/empty', validate(validation.empty), respondWith('body'));
+
 // default errorhandler for express-validation
 app.use(function (err, req, res, next) {
   res.status(400).json(err);
