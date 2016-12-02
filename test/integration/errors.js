@@ -1,6 +1,6 @@
 'use strict';
 require('should');
-var validation = require('../lib/index');
+var validation = require('../../lib/index');
 
 describe('when ValidationError gets thrown', function () {
 

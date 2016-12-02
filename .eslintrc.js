@@ -22,7 +22,7 @@ module.exports = {
     'no-shadow': 0,
     'no-undef': 1,
     'no-underscore-dangle': 0,
-    'no-unused-vars': [1, { vars: 'local', args: 'none', varsIgnorePattern: 'should' }],
+    'no-unused-vars': [1, { vars: 'local', args: 'none' }],
     'no-use-before-define': [2, 'nofunc'],
     'object-curly-spacing': [2, 'always'],
     'one-var': [2, 'never'],

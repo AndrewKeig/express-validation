@@ -1,6 +1,6 @@
 'use strict';
 
-var validation = require('../lib/index');
+var validation = require('../../lib/index');
 var app = require('./app');
 var request = require('supertest');
 require('should');

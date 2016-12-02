@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var validate = require('../lib/index');
+var validate = require('../../lib/index');
 var http = require('http');
 var validation = require('./validation');
 var bodyParser = require('body-parser');

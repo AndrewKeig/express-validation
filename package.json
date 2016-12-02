@@ -34,7 +34,7 @@
   "scripts": {
     "pretest": "eslint lib",
     "test": "mocha -R spec -b",
-    "test-dev": "mocha -R spec -b -w"
+    "test-dev": "mocha -R spec -b -w test/integration/*.js test/*.js"
   },
   "main": "./lib/index",
   "keywords": [
