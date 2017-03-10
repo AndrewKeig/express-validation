@@ -303,6 +303,9 @@ Recap of all options usable both as global or per-validation basis.
 
 ## Changelog
 
+1.0.2:
+ - Lifted Joi peerDependencies, now it's `*` so to offload responsability to end-users. [#58](https://github.com/AndrewKeig/express-validation/issues/58)
+
 1.0.0:
  - Removed `flatten` documentation as the functionality was broken since 0.5.0 and nobody opened an issue about it (nor there were tests for that option).
  - Added `contextRequest` option from [#25](https://github.com/AndrewKeig/express-validation/pull/25), thanks to [@amazzeo](https://github.com/amazzeo)
