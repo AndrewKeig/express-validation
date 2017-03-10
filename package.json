@@ -18,7 +18,7 @@
     "lodash": "^4.9.0"
   },
   "peerDependencies": {
-    "joi": "^9.0.4"
+    "joi": "*"
   },
   "devDependencies": {
     "body-parser": "^1.14.2",
