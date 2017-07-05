@@ -4,6 +4,7 @@ exports.account = require('./account');
 exports.array = require('./array');
 exports.context = require('./context');
 exports.defaults = require('./defaults');
+exports.failAction = require('./failAction');
 exports.login = require('./login');
 exports.logout = require('./logout');
 exports.options = require('./options');

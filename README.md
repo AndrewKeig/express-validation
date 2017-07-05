@@ -239,6 +239,11 @@ app.use(function (err, req, res, next) {
 });
 ```
 
+### Using `failAction`
+
+If a `failAction` key is specified in the schema, it will be called if the schema validation fails.
+This could be used to render an HTML page instead of a JSON error, for example.
+
 ## Options
 
 ### Unknown schema fields - strict checking
