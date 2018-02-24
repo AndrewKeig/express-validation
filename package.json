@@ -49,5 +49,6 @@
       "type": "MIT",
       "url": "https://github.com/andrewkeig/express-validation/raw/master/LICENSE"
     }
-  ]
+  ],
+  "types":"index.d.ts"
 }
