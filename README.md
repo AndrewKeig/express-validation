@@ -126,7 +126,7 @@ Example without `express-validation`:
 app.post('/login', function(req, res){
   console.log(req.body); // => '{ "email": "user@domain", "password": "pwd" }'
   res.json(200);
-});
+});`
 ```
 
 Example with `express-validation`:
@@ -239,10 +239,33 @@ app.use(function (err, req, res, next) {
 });
 ```
 
+### Usage without middleware
+
+If you prefer to use a more imperative approach, you can use `validate` function that accepts a request and a schema and returns the validated data (or throws an Exception if validation fails). Notice that validated data can be different from request data since Joi performs some parsing (like convert string into numbers when required).
+
+```js
+var validate = require('express-validation').validate;
+
+app.post('/login', validate(validation.login), function(req, res, next) {
+  try {
+    var data = validate(req, {
+      body: {
+        email: Joi.string().email().required(),
+        password: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
+      }
+    })
+    ...
+    res.json(200);
+  } catch (err) {
+    next(err)
+  }
+});
+```
+
 ## Options
 
 ### Unknown schema fields - strict checking
-By default, additional fields outside of the schema definition will be ignored by validation.  
+By default, additional fields outside of the schema definition will be ignored by validation.
 To enforce strict checking, set the `allowUnknown\*` options as follows:
 
 ```js
@@ -292,13 +315,13 @@ Thanks to node `require()` caching, all the other `express-validation` instances
 ### Full options list
 Recap of all options usable both as global or per-validation basis.
 
-**allowUnknownBody**: boolean - _default_: `true`  
-**allowUnknownHeaders**: boolean - _default_: `true`  
-**allowUnknownQuery**: boolean - _default_: `true`  
-**allowUnknownParams**: boolean - _default_: `true`  
-**allowUnknownCookies**: boolean - _default_: `true`  
-**status**: integer - _default_: `400`  
-**statusText**: string - _default_: `'Bad Request'`  
+**allowUnknownBody**: boolean - _default_: `true`
+**allowUnknownHeaders**: boolean - _default_: `true`
+**allowUnknownQuery**: boolean - _default_: `true`
+**allowUnknownParams**: boolean - _default_: `true`
+**allowUnknownCookies**: boolean - _default_: `true`
+**status**: integer - _default_: `400`
+**statusText**: string - _default_: `'Bad Request'`
 **contextRequest**: boolean - _default_: `false`
 
 ## Changelog
