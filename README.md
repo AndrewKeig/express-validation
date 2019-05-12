@@ -58,7 +58,7 @@ We have defined two rules `email` and `password`.  They are encapsulated inside 
 
 **file**: [`test/validation/login.js`](test/validation/login.js)
 ```js
-var Joi = require('joi');
+var Joi = require('@hapi/joi');
 
 module.exports = {
   body: {
@@ -152,7 +152,7 @@ Validate that the ID in the request params is the same ID as in the body for the
 
 **file**: [`test/validation/context.js`](test/validation/context.js)
 ```js
-var Joi = require('joi');
+var Joi = require('@hapi/joi');
 
 module.exports = {
   body: {
@@ -207,7 +207,7 @@ Running the above test will produce the following response:
 When creating a validation object that checks `req.headers`; please remember to use `lowercase` names; node.js will convert incoming headers to lowercase:
 
 ```js
-var Joi = require('joi');
+var Joi = require('@hapi/joi');
 
 module.exports = {
   headers: {

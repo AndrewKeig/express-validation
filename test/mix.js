@@ -1,14 +1,14 @@
 'use strict';
 
-var validation = require('../lib/index')
-, app = require('./app')
-, should = require('should')
-, request = require('supertest');
+var validation = require('../lib/index');
+var app = require('./app');
+var should = require('should');
+var request = require('supertest');
 
 describe('validate a mixture of request types', function () {
 
   describe('when the request contains a valid payload and headers', function () {
-    
+
     it('should return a 200 ok response', function (done) {
 
       var login = {
@@ -31,7 +31,7 @@ describe('validate a mixture of request types', function () {
   });
 
   describe('when the request contains a valid payload and headers, with invalid parameter', function () {
-    
+
     it('should return a 200 ok response', function (done) {
 
       var login = {
@@ -50,14 +50,14 @@ describe('validate a mixture of request types', function () {
           response.errors.length.should.equal(1);
           response.errors[0].messages.length.should.equal(1);
           response.errors[0].types.length.should.equal(1);
-          response.errors[0].field.should.equal('id');
+          response.errors[0].field[0].should.equal('id');
           done();
         });
     });
   });
 
   describe('when the request contains a missing payload and valid headers', function () {
-    
+
     it('should return a 400 ok response and two errors', function (done) {
 
       var login = {
@@ -75,14 +75,14 @@ describe('validate a mixture of request types', function () {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           response.errors[0].messages.length.should.equal(2);
-          response.errors[0].field.should.equal('password');
+          response.errors[0].field[0].should.equal('password');
           done();
         });
     });
   });
 
   describe('when the request contains a valid payload and missing headers', function () {
-    
+
     it('should return a 400 ok response and two errors', function (done) {
 
       var login = {
@@ -100,7 +100,7 @@ describe('validate a mixture of request types', function () {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           response.errors[0].messages.length.should.equal(1);
-          response.errors[0].field.should.equal('accesstoken');
+          response.errors[0].field[0].should.equal('accesstoken');
           done();
         });
     });
