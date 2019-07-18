@@ -1,4 +1,4 @@
-var Joi = require('joi');
+var Joi = require('@hapi/joi');
 
 var generateUsername = function (context) {
   return context.firstname.toLowerCase() + '-' + context.lastname.toLowerCase();
