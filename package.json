@@ -15,6 +15,7 @@
     "url": "https://github.com/andrewkeig/express-validation"
   },
   "dependencies": {
+    "@types/joi": "^13.0.5",
     "lodash": "^4.9.0"
   },
   "peerDependencies": {
@@ -49,5 +50,6 @@
       "type": "MIT",
       "url": "https://github.com/andrewkeig/express-validation/raw/master/LICENSE"
     }
-  ]
+  ],
+  "typings": "lib/index"
 }
