@@ -15,8 +15,8 @@
     "url": "https://github.com/andrewkeig/express-validation"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
-    "@types/joi": "^13.0.5"
+    "@types/joi": "^13.0.5",
+    "lodash": "^4.17.15"
   },
   "peerDependencies": {
     "joi": "*"
