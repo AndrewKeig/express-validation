@@ -1,6 +1,8 @@
 express-validation
 ==================
 
+[![Build Status](https://travis-ci.org/AndrewKeig/express-validation.svg?branch=master)](https://travis-ci.org/AndrewKeig/express-validation)
+
 express-validation is a middleware that validates the `body`, `params`, `query`, `headers` and `cookies` of a request and returns a response with errors; if any of the configured validation rules fail.
 
 [![build status](https://travis-ci.org/AndrewKeig/express-validation.svg)](http://travis-ci.org/AndrewKeig/express-validation)
@@ -242,7 +244,7 @@ app.use(function (err, req, res, next) {
 ## Options
 
 ### Unknown schema fields - strict checking
-By default, additional fields outside of the schema definition will be ignored by validation.  
+By default, additional fields outside of the schema definition will be ignored by validation.
 To enforce strict checking, set the `allowUnknown\*` options as follows:
 
 ```js
@@ -292,13 +294,13 @@ Thanks to node `require()` caching, all the other `express-validation` instances
 ### Full options list
 Recap of all options usable both as global or per-validation basis.
 
-**allowUnknownBody**: boolean - _default_: `true`  
-**allowUnknownHeaders**: boolean - _default_: `true`  
-**allowUnknownQuery**: boolean - _default_: `true`  
-**allowUnknownParams**: boolean - _default_: `true`  
-**allowUnknownCookies**: boolean - _default_: `true`  
-**status**: integer - _default_: `400`  
-**statusText**: string - _default_: `'Bad Request'`  
+**allowUnknownBody**: boolean - _default_: `true`
+**allowUnknownHeaders**: boolean - _default_: `true`
+**allowUnknownQuery**: boolean - _default_: `true`
+**allowUnknownParams**: boolean - _default_: `true`
+**allowUnknownCookies**: boolean - _default_: `true`
+**status**: integer - _default_: `400`
+**statusText**: string - _default_: `'Bad Request'`
 **contextRequest**: boolean - _default_: `false`
 
 ## Changelog
