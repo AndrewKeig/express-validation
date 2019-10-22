@@ -33,7 +33,7 @@
   "license": "MIT",
   "scripts": {
     "pretest": "eslint lib",
-    "test": "mocha -R spec -b"
+    "test": "mocha 'test/**/*.js'"
   },
   "main": "./lib/index",
   "keywords": [
