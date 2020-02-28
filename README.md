@@ -308,6 +308,10 @@ Recap of all options usable both as global or per-validation basis.
 
 ## Changelog
 
+2.0.0:
+- Updated to joi version 15, which broke all the things:
+  [#101](https://github.com/AndrewKeig/express-validation/pull/101)
+
 1.0.2:
  - Lifted Joi peerDependencies, now it's `*` so to offload responsability to end-users. [#58](https://github.com/AndrewKeig/express-validation/issues/58)
 
