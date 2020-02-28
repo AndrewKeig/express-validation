@@ -50,7 +50,7 @@ describe('validate a mixture of request types', function () {
           response.errors.length.should.equal(1);
           response.errors[0].messages.length.should.equal(1);
           response.errors[0].types.length.should.equal(1);
-          response.errors[0].field.should.equal('id');
+          response.errors[0].field.should.containEql('id');
           done();
         });
     });
@@ -75,7 +75,7 @@ describe('validate a mixture of request types', function () {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           response.errors[0].messages.length.should.equal(2);
-          response.errors[0].field.should.equal('password');
+          response.errors[0].field.should.containEql('password');
           done();
         });
     });
@@ -100,7 +100,7 @@ describe('validate a mixture of request types', function () {
           var response = JSON.parse(res.text);
           response.errors.length.should.equal(1);
           response.errors[0].messages.length.should.equal(1);
-          response.errors[0].field.should.equal('accesstoken');
+          response.errors[0].field.should.containEql('accesstoken');
           done();
         });
     });

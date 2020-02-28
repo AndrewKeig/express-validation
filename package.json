@@ -19,14 +19,14 @@
     "lodash": "^4.17.15"
   },
   "peerDependencies": {
-    "joi": "*"
+    "@hapi/joi": "*"
   },
   "devDependencies": {
+    "@hapi/joi": "^15.1.0",
     "body-parser": "1.19.0",
     "cookie-parser": "1.4.4",
     "eslint": "6.4.0",
     "express": "4.17.1",
-    "joi": "*",
     "mocha": "6.2.0",
     "should": "13.2.3",
     "supertest": "4.0.2"
@@ -34,7 +34,7 @@
   "license": "MIT",
   "scripts": {
     "pretest": "eslint lib",
-    "test": "mocha -R spec -b",
+    "test": "mocha 'test/**/*.js'",
     "lint": "eslint lib"
   },
   "main": "./lib/index",
