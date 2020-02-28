@@ -342,6 +342,7 @@ This work is licensed under the MIT License (see the LICENSE file).
 https://github.com/AndrewKeig/express-validation/blob/master/LICENSE
 
 ## Contributors
+  * Fedor Yakubovich https://github.com/fedoryakubovich
   * Christian Holm https://github.com/holm
   * Iheanyi Ekechukwu https://github.com/iheanyi
   * Aymeric Beaumet https://github.com/aymericbeaumet
