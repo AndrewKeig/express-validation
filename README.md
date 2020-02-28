@@ -12,6 +12,10 @@ express-validation is a middleware that validates the `body`, `params`, `query`,
 $ npm install express-validation --save
 ```
 
+## Joi 15
+Joi upgrade to 15, broke all the things, we now support joi 15 as of version 2.0.0 of this module, if using a version of joi < 15, install version 1.0.3 of this module.
+
+
 
 ## Supporting
 
