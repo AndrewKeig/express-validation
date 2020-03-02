@@ -1,6 +1,6 @@
 {
   "name": "express-validation",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates the body, params, query, headers and cookies of a request and returns a response with errors; if any of the configured validation rules fail.",
   "homepage": "https://github.com/andrewkeig/express-validation",
@@ -15,27 +15,41 @@
     "url": "https://github.com/andrewkeig/express-validation"
   },
   "dependencies": {
-    "@types/joi": "^14.3.3",
-    "lodash": "^4.17.15"
+    "@types/joi": "^14.3.3"
   },
   "peerDependencies": {
     "@hapi/joi": "*"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
+  },
   "devDependencies": {
-    "@hapi/joi": "^15.1.0",
+    "@hapi/joi": "^17.1.0",
     "body-parser": "1.19.0",
     "cookie-parser": "1.4.4",
-    "eslint": "6.4.0",
     "express": "4.17.1",
-    "mocha": "6.2.0",
-    "should": "13.2.3",
-    "supertest": "4.0.2"
+    "supertest": "4.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.7.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.7"
   },
   "license": "MIT",
   "scripts": {
-    "pretest": "eslint lib",
-    "test": "mocha 'test/**/*.js'",
-    "lint": "eslint lib"
+    "test:watch": "jest --watch",
+    "lint": "eslint 'lib/*.js'",
+    "test": "jest --runInBand",
+    "coverage": "jest --coverage --runInBand"
   },
   "main": "./lib/index",
   "keywords": [

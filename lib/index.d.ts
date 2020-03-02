@@ -5,9 +5,11 @@
 /// <reference types="node" />
 import { RequestHandler } from "express";
 import * as Joi from "joi";
+
 interface ValidatorField {
   [key: string]: any;
 }
+
 interface Validator {
   body?: ValidatorField;
   params?: ValidatorField;
@@ -24,6 +26,7 @@ interface Validator {
 }
 
 declare function validate(validator: Validator): RequestHandler;
+
 declare namespace validate {
   export class ValidationError {
     errors: Messages[];

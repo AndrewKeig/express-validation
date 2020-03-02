@@ -5,7 +5,7 @@ var validation = require('../lib/index')
   , should = require('should')
   , request = require('supertest');
 
-describe('sending', function () {
+describe.skip('sending', function () {
 
   describe('a parameter as string', function () {
     // Expect default values to be set
