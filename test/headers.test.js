@@ -9,7 +9,7 @@ describe('validate headers', () => {
         .set('accessToken', '4343434343')
         .set('userId', '3243243242');
 
-      expect(response.status).toBe(200);
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -20,7 +20,7 @@ describe('validate headers', () => {
         .set('accesstoken', '')
         .set('userId', '');
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.headers[0].path[0]).toBe('accesstoken');
     });
   });

@@ -15,7 +15,7 @@ describe('validate a mixture of request types', () => {
         .set('userId', '3243243242')
         .send(login);
 
-      expect(response.status).toBe(200);
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -32,7 +32,7 @@ describe('validate a mixture of request types', () => {
         .set('userId', '3243243242')
         .send(login);
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.params.length).toBe(1);
       expect(response.body.errors.params[0].path[0]).toBe('id');
     });
@@ -51,7 +51,7 @@ describe('validate a mixture of request types', () => {
         .set('userId', '3243243242')
         .send(login);
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.body.length).toBe(1);
       expect(response.body.errors.body[0].path[0]).toBe('password');
     });
@@ -70,9 +70,31 @@ describe('validate a mixture of request types', () => {
         .set('userId', '3243243242')
         .send(login);
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.headers.length).toBe(1);
       expect(response.body.errors.headers[0].path[0]).toBe('accesstoken');
+    });
+  });
+
+  describe('when the request contains an invalid payload and missing headers', () => {
+    it('should return a 400 ok response and two errors', async () => {
+      const login = {
+        email: 'andrew.keig@gmail.com',
+        password: '',
+      };
+
+      const response = await request(app)
+        .put('/user/1')
+        .set('accessToken', '')
+        .set('userId', '3243243242')
+        .send(login);
+
+      expect(response.statusCode).toBe(400);
+      expect(response.body.errors.headers.length).toBe(1);
+      expect(response.body.errors.headers[0].path[0]).toBe('accesstoken');
+
+      expect(response.body.errors.body.length).toBe(1);
+      expect(response.body.errors.body[0].path[0]).toBe('password');
     });
   });
 });

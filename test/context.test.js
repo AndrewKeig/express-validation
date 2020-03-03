@@ -8,7 +8,7 @@ describe('Context', () => {
         .post('/context/1')
         .send({ id: '1' });
 
-      expect(response.status).toBe(200);
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -18,7 +18,7 @@ describe('Context', () => {
         .post('/context/1')
         .send({ id: '2' });
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.body[0].path[0]).toBe('id');
     });
   });

@@ -8,7 +8,7 @@ describe('Mutation', () => {
         .post('/defaults')
         .send({ firstname: 'Jane', lastname: 'Doe' });
 
-      expect(response.status).toBe(200);
+      expect(response.statusCode).toBe(200);
       expect(response.body.firstname).toBe('Jane');
       expect(response.body.lastname).toBe('Doe');
       expect(response.body.username).toBe('jane-doe');
@@ -24,7 +24,7 @@ describe('Mutation', () => {
         .post('/defaults')
         .send({});
 
-      expect(response.status).toBe(200);
+      expect(response.statusCode).toBe(200);
       expect(response.body.firstname).toBe('Andrew');
       expect(response.body.lastname).toBe('Keig');
       expect(response.body).not.toHaveProperty('username');

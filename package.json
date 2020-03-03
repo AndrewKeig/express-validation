@@ -15,11 +15,9 @@
     "url": "https://github.com/andrewkeig/express-validation"
   },
   "dependencies": {
-    "@types/joi": "^14.3.3"
-  },
-  "peerDependencies": {
     "@hapi/joi": "*"
   },
+
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
@@ -28,6 +26,7 @@
   },
   "devDependencies": {
     "@hapi/joi": "^17.1.0",
+    "@types/joi": "^14.3.3",
     "body-parser": "1.19.0",
     "cookie-parser": "1.4.4",
     "express": "4.17.1",
@@ -48,7 +47,7 @@
   "scripts": {
     "test:watch": "jest --watch",
     "lint": "eslint 'lib/*.js'",
-    "test": "jest --runInBand",
+    "test": "jest mix.test.js",
     "coverage": "jest --coverage --runInBand"
   },
   "main": "./lib/index",

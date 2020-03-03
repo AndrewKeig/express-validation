@@ -13,7 +13,7 @@ describe('validate body', () => {
         .post('/login')
         .send(login);
 
-      expect(response.status).toBe(200);
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -28,7 +28,7 @@ describe('validate body', () => {
         .post('/login')
         .send(login);
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.body.length).toBe(1);
       expect(response.body.errors.body[0].path[0]).toBe('email');
     });
@@ -45,7 +45,7 @@ describe('validate body', () => {
         .post('/login')
         .send(login);
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.body.length).toBe(1);
       expect(response.body.errors.body[0].path[0]).toBe('password');
     });
@@ -62,7 +62,7 @@ describe('validate body', () => {
         .post('/login')
         .send(login);
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.body.length).toBe(1);
       expect(response.body.errors.body[0].path[0]).toBe('email');
     });
@@ -80,7 +80,7 @@ describe('validate body', () => {
         .post('/login')
         .send(login);
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.body.length).toBe(1);
       expect(response.body.errors.body[0].message).toBe('"token" is not allowed');
     });

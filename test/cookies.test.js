@@ -9,7 +9,7 @@ describe('validate cookies', () => {
         .set('Cookie', 'id=1; session=0123456789abcdef;')
         .send();
 
-      expect(response.status).toBe(200);
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -20,7 +20,7 @@ describe('validate cookies', () => {
         .set('Cookie', 'id=1; session=abc;')
         .send();
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.cookies.length).toBe(1);
       expect(response.body.errors.cookies[0].path[0]).toBe('session');
     });
@@ -33,7 +33,7 @@ describe('validate cookies', () => {
         .set('Cookie', 'id=1;')
         .send();
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.cookies.length).toBe(1);
       expect(response.body.errors.cookies[0].path[0]).toBe('session');
     });
@@ -45,7 +45,7 @@ describe('validate cookies', () => {
         .post('/logout')
         .send();
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.cookies.length).toBe(2);
       expect(response.body.errors.cookies[0].path[0]).toBe('id');
       expect(response.body.errors.cookies[1].path[0]).toBe('session');
@@ -59,7 +59,7 @@ describe('validate cookies', () => {
         .set('Cookie', 'id=1; session=0123456789abcdef; a=b;')
         .send();
 
-      expect(response.status).toBe(400);
+      expect(response.statusCode).toBe(400);
       expect(response.body.errors.cookies.length).toBe(1);
       expect(response.body.errors.cookies[0].path[0]).toBe('a');
     });

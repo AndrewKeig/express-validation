@@ -355,3 +355,4 @@ https://github.com/AndrewKeig/express-validation/blob/master/LICENSE
   * Robert Barbey https://github.com/rbarbey
   * Stefan Lapers https://github.com/slapers
   * Alex Mazzeo https://github.com/amazzeo
+  * Fabian Gutierrez <https://github.com/fega

@@ -5,6 +5,13 @@
 /// <reference types="node" />
 import { RequestHandler } from "express";
 import * as Joi from "joi";
+import {
+  Root as joi,
+  ValidationOptions,
+  ValidationError,
+  ValidationResult,
+} from '@hapi/joi';
+
 
 interface ValidatorField {
   [key: string]: any;
@@ -16,28 +23,22 @@ interface Validator {
   query?: ValidatorField;
   headers?: ValidatorField;
   cookies?: ValidatorField;
-  options?: {
-    allowUnknownBody?: boolean;
-    allowUnknownHeaders?: boolean;
-    allowUnknownQuery?: boolean;
-    allowUnknownParams?: boolean;
-    allowUnknownCookies?: boolean
-  };
+  signedCookies?: ValidatorField;
 }
 
-declare function validate(validator: Validator): RequestHandler;
+interface EvOptions {
+  context?: boolean;
+}
+
+declare function validate(validator: Validator, options?: EvOptions, joiOptions?: ValidationOptions): RequestHandler;
 
 declare namespace validate {
   export class ValidationError {
-    errors: Messages[];
-    status: number;
-    statusText: string;
+    name: string;
     message: "validation error";
-
-  }
-  interface Messages {
-    message: string;
-    types: string;
+    errors: ValidationError[];
+    statusCode: number;
+    statusText: string;
   }
 }
 
