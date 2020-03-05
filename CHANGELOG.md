@@ -1,13 +1,14 @@
 
 ## Changelog
 
-## Changes from versions 3.0
+### Changes from versions 2.0
 
-- Global options for `allowUnknown` removed
-- Joi no longer parsing response to JSON, so we dont 
+- Global options for `allowUnknown*` removed
+- Joi no longer parsing response to JSON, so we dont
 
 
-## Changes before 3.0
+
+### Changes before 3.0
 
 2.0.0:
 - Updated to joi version 15, which broke all the things:

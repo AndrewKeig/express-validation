@@ -165,10 +165,7 @@ Options, used by `express-validation`:
 
 Default: `{}`
 
-Options, used by `joi`, see [Joi options](https://hapi.dev/family/joi/api/?v=17.1.0#anyvalidateasyncvalue-options), two useful options to know are:
-  - `allowUnknown`, rejects request if unknown fields in the request
-  - `abortEarly`, we support `{ abortEarly: false },`, in order to rerieve all errors for a request not just the first encountered.
-
+Options, used by `joi`, see [Joi options](https://hapi.dev/family/joi/api/?v=17.1.0#anyvalidateasyncvalue-options), note:
 
 ## Examples
 
