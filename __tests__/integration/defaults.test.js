@@ -1,7 +1,29 @@
+const Joi = require('@hapi/joi');
 const request = require('supertest');
-const app = require('./app');
+const { createServer } = require('../../_mocks_/express');
 
-describe('Mutation', () => {
+const generateUsername = context => {
+  if (context && context.firstname && context.lastname) {
+    return `${context.firstname.toLowerCase()}-${context.lastname.toLowerCase()}`;
+  }
+};
+
+generateUsername.description = 'generated username';
+
+const schema = {
+  body: Joi.object({
+    username: Joi.string().default(generateUsername),
+    firstname: Joi.string().default('Andrew'),
+    lastname: Joi.string().default('Keig'),
+    created: Joi.date().default(Date.now),
+    registered: Joi.boolean().default(true),
+    values: Joi.array().default(['1']),
+  }),
+};
+
+const app = createServer('post', '/defaults', schema, { context: true }, {}, 'body');
+
+describe('Defaults', () => {
   describe('when the values are missing', () => {
     it('should return the request with default values', async () => {
       const response = await request(app)

@@ -1,5 +1,19 @@
+const Joi = require('@hapi/joi');
 const request = require('supertest');
-const app = require('./app');
+const { createServer } = require('../../_mocks_/express');
+
+const schema = {
+  cookies: Joi.object({
+    id: Joi.string()
+      .regex(/^[0-9]+$/)
+      .required(),
+    session: Joi.string()
+      .regex(/^[a-zA-Z0-9]{16}$/)
+      .required(),
+  }),
+};
+
+const app = createServer('post', '/logout', schema, {}, { abortEarly: false  });
 
 describe('validate cookies', () => {
   describe('when the request contains a valid payload', () => {
@@ -21,8 +35,8 @@ describe('validate cookies', () => {
         .send();
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.cookies.length).toBe(1);
-      expect(response.body.errors.cookies[0].path[0]).toBe('session');
+      expect(response.body.details.cookies.length).toBe(1);
+      expect(response.body.details.cookies[0].path[0]).toBe('session');
     });
   });
 
@@ -34,8 +48,8 @@ describe('validate cookies', () => {
         .send();
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.cookies.length).toBe(1);
-      expect(response.body.errors.cookies[0].path[0]).toBe('session');
+      expect(response.body.details.cookies.length).toBe(1);
+      expect(response.body.details.cookies[0].path[0]).toBe('session');
     });
   });
 
@@ -46,9 +60,9 @@ describe('validate cookies', () => {
         .send();
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.cookies.length).toBe(2);
-      expect(response.body.errors.cookies[0].path[0]).toBe('id');
-      expect(response.body.errors.cookies[1].path[0]).toBe('session');
+      expect(response.body.details.cookies.length).toBe(2);
+      expect(response.body.details.cookies[0].path[0]).toBe('id');
+      expect(response.body.details.cookies[1].path[0]).toBe('session');
     });
   });
 
@@ -60,8 +74,8 @@ describe('validate cookies', () => {
         .send();
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.cookies.length).toBe(1);
-      expect(response.body.errors.cookies[0].path[0]).toBe('a');
+      expect(response.body.details.cookies.length).toBe(1);
+      expect(response.body.details.cookies[0].path[0]).toBe('a');
     });
   });
 });

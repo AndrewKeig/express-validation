@@ -1,5 +1,19 @@
+const Joi = require('@hapi/joi');
 const request = require('supertest');
-const app = require('./app');
+const { createServer } = require('../../_mocks_/express');
+
+const schema = {
+  body: Joi.object({
+    email: Joi.string()
+      .email()
+      .required(),
+    password: Joi.string()
+      .regex(/[a-zA-Z0-9]{3,30}/)
+      .required(),
+  }),
+};
+
+const app = createServer('post', '/login', schema, {}, {});
 
 describe('validate body', () => {
   describe('when the request contains a valid payload', () => {
@@ -29,8 +43,8 @@ describe('validate body', () => {
         .send(login);
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.body.length).toBe(1);
-      expect(response.body.errors.body[0].path[0]).toBe('email');
+      expect(response.body.details.body.length).toBe(1);
+      expect(response.body.details.body[0].path[0]).toBe('email');
     });
   });
 
@@ -38,7 +52,7 @@ describe('validate body', () => {
     it('should return a 400 response and a single error', async () => {
       const login = {
         email: 'andrew.keig@gmail.com',
-        password: ''
+        password: '',
       };
 
       const response = await request(app)
@@ -46,8 +60,8 @@ describe('validate body', () => {
         .send(login);
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.body.length).toBe(1);
-      expect(response.body.errors.body[0].path[0]).toBe('password');
+      expect(response.body.details.body.length).toBe(1);
+      expect(response.body.details.body[0].path[0]).toBe('password');
     });
   });
 
@@ -63,8 +77,8 @@ describe('validate body', () => {
         .send(login);
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.body.length).toBe(1);
-      expect(response.body.errors.body[0].path[0]).toBe('email');
+      expect(response.body.details.body.length).toBe(1);
+      expect(response.body.details.body[0].path[0]).toBe('email');
     });
   });
 
@@ -81,8 +95,8 @@ describe('validate body', () => {
         .send(login);
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.body.length).toBe(1);
-      expect(response.body.errors.body[0].message).toBe('"token" is not allowed');
+      expect(response.body.details.body.length).toBe(1);
+      expect(response.body.details.body[0].message).toBe('"token" is not allowed');
     });
   });
 });

@@ -1,5 +1,16 @@
+const Joi = require('@hapi/joi');
 const request = require('supertest');
-const app = require('./app');
+const { createServer } = require('../../_mocks_/express');
+
+const schema = {
+  body: Joi.object({
+    id: Joi.string()
+      .valid(Joi.ref('$params.id'))
+      .required(),
+  }),
+};
+
+const app = createServer('post', '/context/:id', schema, { context: true }, {});
 
 describe('Context', () => {
   describe('when the schema contains a reference to the request object', () => {
@@ -19,7 +30,7 @@ describe('Context', () => {
         .send({ id: '2' });
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.body[0].path[0]).toBe('id');
+      expect(response.body.details.body[0].path[0]).toBe('id');
     });
   });
 });

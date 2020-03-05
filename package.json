@@ -2,22 +2,42 @@
   "name": "express-validation",
   "version": "3.0.0",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
-  "description": "express-validation is a middleware that validates the body, params, query, headers and cookies of a request and returns a response with errors; if any of the configured validation rules fail.",
+  "description": "express-validation is a middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.",
+  "main": "./lib/index",
   "homepage": "https://github.com/andrewkeig/express-validation",
-  "contributors": [
-    {
-      "name": "Valerio Coltre",
-      "email": "mister.gamer@gmail.com"
-    }
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewkeig/express-validation"
   },
-  "dependencies": {
-    "@hapi/joi": "*"
+  "bugs": {
+    "url": "https://github.com/andrewkeig/express-validation/issues"
   },
-
+  "scripts": {
+    "test:watch": "jest --watch",
+    "lint": "eslint 'lib/*.js'",
+    "test": "jest",
+    "test-single": "jest validate.test.js",
+    "coverage": "jest --coverage --runInBand",
+    "push-coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
+  },
+  "keywords": [
+    "express",
+    "validation",
+    "validate",
+    "joi",
+    "middleware"
+  ],
+  "dependencies": {
+    "@hapi/joi": "17.x.x"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "lib/**/*.{js,jsx}"
+    ],
+    "modulePathIgnorePatterns": [
+      "__mocks__"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
@@ -25,12 +45,11 @@
     }
   },
   "devDependencies": {
-    "@hapi/joi": "^17.1.0",
     "@types/joi": "^14.3.3",
-    "body-parser": "1.19.0",
-    "cookie-parser": "1.4.4",
-    "express": "4.17.1",
-    "supertest": "4.0.2",
+    "benchmark": "^2.1.4",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "coveralls": "^3.0.9",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-standard": "^14.1.0",
@@ -39,26 +58,13 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "express": "^4.17.1",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "lint-staged": "^10.0.7"
+    "lint-staged": "^10.0.7",
+    "supertest": "4.0.2"
   },
   "license": "MIT",
-  "scripts": {
-    "test:watch": "jest --watch",
-    "lint": "eslint 'lib/*.js'",
-    "test": "jest mix.test.js",
-    "coverage": "jest --coverage --runInBand"
-  },
-  "main": "./lib/index",
-  "keywords": [
-    "express",
-    "validation",
-    "validate"
-  ],
-  "bugs": {
-    "url": "https://github.com/andrewkeig/express-validation/issues"
-  },
   "licenses": [
     {
       "type": "MIT",

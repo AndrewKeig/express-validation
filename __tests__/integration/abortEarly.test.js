@@ -1,7 +1,30 @@
+const Joi = require('@hapi/joi');
 const request = require('supertest');
-const app = require('./app');
+const { createServer } = require('../../_mocks_/express');
 
-describe('validate a mixture of request types', () => {
+const schema = {
+  headers: Joi.object({
+    accesstoken: Joi.string().required(),
+    userid: Joi.string().required(),
+  }).unknown(),
+  params: Joi.object({
+    id: Joi.number()
+      .integer()
+      .required(),
+  }),
+  body: Joi.object({
+    email: Joi.string()
+      .email()
+      .required(),
+    password: Joi.string()
+      .regex(/[a-zA-Z0-9]{3,30}/)
+      .required(),
+  }),
+};
+
+const app = createServer('put', '/user/:id', schema, {}, { abortEarly: false });
+
+describe('Abort early', () => {
   describe('when the request contains a valid payload and headers', () => {
     it('should return a 200 ok response', async () => {
       const login = {
@@ -33,8 +56,8 @@ describe('validate a mixture of request types', () => {
         .send(login);
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.params.length).toBe(1);
-      expect(response.body.errors.params[0].path[0]).toBe('id');
+      expect(response.body.details.params.length).toBe(1);
+      expect(response.body.details.params[0].path[0]).toBe('id');
     });
   });
 
@@ -52,8 +75,8 @@ describe('validate a mixture of request types', () => {
         .send(login);
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.body.length).toBe(1);
-      expect(response.body.errors.body[0].path[0]).toBe('password');
+      expect(response.body.details.body.length).toBe(1);
+      expect(response.body.details.body[0].path[0]).toBe('password');
     });
   });
 
@@ -71,8 +94,8 @@ describe('validate a mixture of request types', () => {
         .send(login);
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.headers.length).toBe(1);
-      expect(response.body.errors.headers[0].path[0]).toBe('accesstoken');
+      expect(response.body.details.headers.length).toBe(1);
+      expect(response.body.details.headers[0].path[0]).toBe('accesstoken');
     });
   });
 
@@ -90,11 +113,11 @@ describe('validate a mixture of request types', () => {
         .send(login);
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.headers.length).toBe(1);
-      expect(response.body.errors.headers[0].path[0]).toBe('accesstoken');
+      expect(response.body.details.headers.length).toBe(1);
+      expect(response.body.details.headers[0].path[0]).toBe('accesstoken');
 
-      expect(response.body.errors.body.length).toBe(1);
-      expect(response.body.errors.body[0].path[0]).toBe('password');
+      expect(response.body.details.body.length).toBe(1);
+      expect(response.body.details.body[0].path[0]).toBe('password');
     });
   });
 });

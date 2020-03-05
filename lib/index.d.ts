@@ -38,7 +38,7 @@ declare namespace validate {
     message: "validation error";
     errors: ValidationError[];
     statusCode: number;
-    statusText: string;
+    error: string;
   }
 }
 

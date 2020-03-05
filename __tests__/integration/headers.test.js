@@ -1,5 +1,15 @@
+const Joi = require('@hapi/joi');
 const request = require('supertest');
-const app = require('./app');
+const { createServer } = require('../../_mocks_/express');
+
+const schema = {
+  headers: Joi.object({
+    accesstoken: Joi.string().required(),
+    userid: Joi.string().required(),
+  }).unknown(),
+};
+
+const app = createServer('get', '/user', schema, {}, { abortEarly: true });
 
 describe('validate headers', () => {
   describe('when the request contains a valid header', () => {
@@ -21,7 +31,7 @@ describe('validate headers', () => {
         .set('userId', '');
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.headers[0].path[0]).toBe('accesstoken');
+      expect(response.body.details.headers[0].path[0]).toBe('accesstoken');
     });
   });
 });

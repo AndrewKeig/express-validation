@@ -1,5 +1,16 @@
+const Joi = require('@hapi/joi');
 const request = require('supertest');
-const app = require('./app');
+const { createServer } = require('../../_mocks_/express');
+
+const schema = {
+  params: Joi.object({
+    id: Joi.number()
+      .integer()
+      .required(),
+  }),
+};
+
+const app = createServer('get', '/account/:id', schema, {}, { abortEarly: true }, 'params');
 
 describe('validate params', () => {
   describe('when the request contains a valid parameter', () => {
@@ -14,8 +25,8 @@ describe('validate params', () => {
     it('should return a 400 response', async () => {
       const response = await request(app).get('/account/a');
       expect(response.statusCode).toBe(400);
-      expect(response.body.errors.params.length).toBe(1);
-      expect(response.body.errors.params[0].path[0]).toBe('id');
+      expect(response.body.details.params.length).toBe(1);
+      expect(response.body.details.params[0].path[0]).toBe('id');
     });
   });
 });
