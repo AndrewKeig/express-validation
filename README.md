@@ -9,7 +9,7 @@ express-validation
 ![Coveralls github](https://img.shields.io/coveralls/github/andrewkeig/express-validation)
 
 
-`express-validation` is a zero dependency express middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.
+`express-validation` is an express middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.
 
 We use [joi](https://github.com/hapijs/joi/tree/master) to define validation rules, we have a hard dependency on Joi in order to avoid compatability issues with Joi releases.
 
