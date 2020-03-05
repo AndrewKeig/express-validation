@@ -1,0 +1,12 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb-base"],
+  "rules": {
+    "arrow-parens": 0,
+    "eslint-disable-next": 0
+  }
+}
