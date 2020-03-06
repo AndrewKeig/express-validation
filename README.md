@@ -187,17 +187,17 @@ We also expose the version of Joi we have as a dependency, in order to avoid com
 For more information on how to use `express-validation` please see the following examples:
 
 #### abortEarly
-[`abortEarly.test.js`](`../__tests__/integration/abortEarly.test.js`)
+[`abortEarly.test.js`](../__tests__/integration/abortEarly.test.js)
 
 You can return multiple errors, not just the first encountered, by setting, the joi option `abortEarly: false`
 
 #### context
-[`context.test.js`](`../_tests__/integration/context.test.js`)
+[`context.test.js`](../_tests__/integration/context.test.js)
 
 Enabling the `context` in `options`, allows you to reference other parts of the request in your validation.
 
 #### defaults
-[`default.test.js`](`../__tests__/integration/defaults.test.js`)
+[`default.test.js`](../__tests__/integration/defaults.test.js)
 
 You can specify `joi` `default` values in your schema.
 
