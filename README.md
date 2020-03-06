@@ -192,7 +192,7 @@ For more information on how to use `express-validation` please see the following
 You can return multiple errors, not just the first encountered, by setting, the joi option `abortEarly: false`
 
 #### context
-[`context.test.js`](/_tests__/integration/context.test.js)
+[`context.test.js`](/__tests__/integration/context.test.js)
 
 Enabling the `context` in `options`, allows you to reference other parts of the request in your validation.
 
