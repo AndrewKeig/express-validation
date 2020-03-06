@@ -6,7 +6,7 @@ express-validation
 [![dependencies](https://david-dm.org/andrewkeig/express-validation.svg)](https://david-dm.org/andrewkeig/express-validation)
 [![Current Version](https://flat.badgen.net/npm/v/express-validation?icon=npm)](https://www.npmjs.org/package/express-validation)
 [![airbnb-style](https://flat.badgen.net/badge/eslint/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
-![Coveralls github](https://img.shields.io/coveralls/github/andrewkeig/express-validation)
+[![Coverage Status](https://coveralls.io/repos/github/AndrewKeig/express-validation/badge.svg)](https://coveralls.io/github/AndrewKeig/express-validation)
 
 
 `express-validation` is an express middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.

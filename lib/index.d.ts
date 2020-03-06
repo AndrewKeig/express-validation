@@ -1,45 +1,44 @@
 // Type definitions for express-validation
-// Project: https://github.com/andrewkeig/express-validation/issues
-// Definitions by: Fabian Gutierrez <https://github.com/fega>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 /// <reference types="node" />
 import { RequestHandler } from "express";
-import * as Joi from "joi";
-import {
-  Root as joi,
-  ValidationOptions,
-  ValidationError,
-  ValidationResult,
+import { 
+  ValidationOptions, 
+  ValidationError as JoiError,
+  Root as joiRoot, 
 } from '@hapi/joi';
-
-
-interface ValidatorField {
-  [key: string]: any;
-}
-
-interface Validator {
-  body?: ValidatorField;
-  params?: ValidatorField;
-  query?: ValidatorField;
-  headers?: ValidatorField;
-  cookies?: ValidatorField;
-  signedCookies?: ValidatorField;
-}
 
 interface EvOptions {
   context?: boolean;
+  keyByField?: boolean;
+  statusCode?: number;
 }
 
-declare function validate(validator: Validator, options?: EvOptions, joiOptions?: ValidationOptions): RequestHandler;
-
-declare namespace validate {
-  export class ValidationError {
-    name: string;
-    message: "validation error";
-    errors: ValidationError[];
-    statusCode: number;
-    error: string;
-  }
+interface schema {
+  params?: object;
+  headers?: object;
+  query?: object;
+  cookies?: object;
+  signedCookies?: object;
+  body?: object;
 }
 
-export = validate;
+interface errors {
+  params?: JoiError[];
+  headers?: JoiError[];
+  query?: JoiError[];
+  cookies?: JoiError[];
+  signedCookies?: JoiError[];
+  body?: JoiError[];
+}
+
+export declare const Joi: joiRoot;
+
+export declare function validate(schema: schema, options?: EvOptions, joiRoot?: ValidationOptions): RequestHandler;
+
+export class ValidationError {
+  name: string;
+  message: "validation error";
+  statusCode: number;
+  error: string;
+  details: errors;
+}

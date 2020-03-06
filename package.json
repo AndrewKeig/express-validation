@@ -1,6 +1,6 @@
 {
   "name": "express-validation",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.",
   "main": "./lib/index",
@@ -17,8 +17,7 @@
     "lint": "eslint 'lib/*.js'",
     "test": "jest",
     "test-single": "jest validate.test.js",
-    "coverage": "jest --coverage --runInBand",
-    "push-coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "coverage": "jest --coverage --runInBand"
   },
   "keywords": [
     "express",
@@ -49,7 +48,6 @@
     "benchmark": "^2.1.4",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
-    "coveralls": "^3.0.9",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-standard": "^14.1.0",
