@@ -5,10 +5,10 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { validate, ValidationError } = require('../lib/index');
 
-exports.createServer = (verb, route, schema, options = {}, joi = {}, key = null) => {
+exports.createServer = (verb, route, schema, options = {}, joi = {}, key = null, secret = '') => {
   const app = express();
   app.use(bodyParser.json());
-  app.use(cookieParser());
+  app.use(cookieParser(secret));
   app[verb](route, validate(schema, options, joi), (req, res) => {
     const result = key ? req[key] : {};
     return res.status(200).json(result);

@@ -4,6 +4,7 @@
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.",
   "main": "./lib/index",
+  "types": "lib/index.d.ts",
   "homepage": "https://github.com/andrewkeig/express-validation",
   "repository": {
     "type": "git",
@@ -16,8 +17,13 @@
     "test:watch": "jest --watch",
     "lint": "eslint 'lib/*.js'",
     "test": "jest",
-    "test-single": "jest validate.test.js",
-    "coverage": "jest --coverage --runInBand"
+    "test-single": "jest signed.test.js",
+    "benchmark": "node benchmarks/ev.js",
+    "coverage": "jest --coverage --runInBand",
+    "load-post": "load/post.sh",
+    "load-get": "load/get.sh",
+    "flame": "load/flame.sh",
+    "bubble": "load/bubble.sh"
   },
   "keywords": [
     "express",
@@ -34,7 +40,8 @@
       "lib/**/*.{js,jsx}"
     ],
     "modulePathIgnorePatterns": [
-      "__mocks__"
+      "__mocks__",
+      "load"
     ]
   },
   "husky": {
@@ -44,10 +51,12 @@
     }
   },
   "devDependencies": {
-    "@types/joi": "^14.3.3",
+    "@types/express": "4.x.x",
+    "@types/hapi__joi": "16.x.x",
     "benchmark": "^2.1.4",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "cookie-signature": "^1.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-standard": "^14.1.0",

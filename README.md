@@ -59,10 +59,11 @@ const loginValidation = {
   }),
 }
 
+const app = express();
 app.use(bodyParser.json())
 
-app.post('/login', validate(loginValidation, options, joiOptions), () => (req, res) {
-    res.json(200)
+app.post('/login', validate(loginValidation, {}, {}), (req, res) => {
+  res.json(200)
 })
 
 app.use(function(err, req, res, next) {
@@ -141,12 +142,12 @@ returns a `validationError` instance if schema contains errors.
 Default: `{}`
 
 Includes validition rules, defined using `joi`, the rules are keyed by the following `parameter` types:
-  - body
+  - headers
   - params (path)
   - query
-  - headers
   - cookies
   - signedCookies
+  - body
 
 
 ### `options` (Object)
@@ -172,17 +173,17 @@ Options, used by `joi`, see [Joi options](https://hapi.dev/family/joi/api/?v=17.
 For more information on how to use `express-validation` please see the following examples:
 
 #### abortEarly
-[`test/abortEarly.test.js`](`test/abortEarly.test.js`)
+[`test/abortEarly.test.js`](`test/integration/abortEarly.test.js`)
 
 You can return multiple errors, not just the first encountered, by setting, the joi option `abortEarly: false`
 
 #### context
-[`test/context.test.js`](`test/context.test.js`)
+[`test/context.test.js`](`test/integration/context.test.js`)
 
 Enabling the `context` in `options`, allows you to reference other parts of the request in your validation.
 
 #### defaults
-[`test/default.test.js`](`test/default.test.js`)
+[`test/default.test.js`](`test/integration/default.test.js`)
 
 You can specify `joi` `default` values in your schema.
 
