@@ -1,6 +1,13 @@
 const { keyByField } = require('../../lib/reducers.js');
 
 describe('Reducers', () => {
+  describe('when request to reduce errors is null', () => {
+    it('should return null', async () => {
+      const result = keyByField(null, true);
+      expect(result).toEqual(null);
+    });
+  });
+
   describe('when request to reduce errors', () => {
     it('should return simplified errors', async () => {
       const error = {

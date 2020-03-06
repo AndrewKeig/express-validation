@@ -7,11 +7,15 @@ express-validation
 [![Current Version](https://flat.badgen.net/npm/v/express-validation?icon=npm)](https://www.npmjs.org/package/express-validation)
 [![airbnb-style](https://flat.badgen.net/badge/eslint/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
 [![Coverage Status](https://coveralls.io/repos/github/AndrewKeig/express-validation/badge.svg)](https://coveralls.io/github/AndrewKeig/express-validation)
+[![npm downloads](https://img.shields.io/npm/dm/express-validation.svg?style=flat)](https://www.npmjs.com/package/express-validation)
+[![Known Vulnerabilities](https://snyk.io//test/github/andrewkeig/express-validation/badge.svg?targetFile=package.json)](https://snyk.io//test/github/andrewkeig/express-validation?targetFile=package.json)
 
 
 `express-validation` is an express middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.
 
-We use [joi](https://github.com/hapijs/joi/tree/master) to define validation rules, we have a hard dependency on Joi in order to avoid compatability issues with Joi releases.
+We use [joi](https://github.com/hapijs/joi/tree/master) to define validation rules, we have a hard dependency on Joi in order to avoid compatibility issues with Joi releases.
+
+Currently support Joi v17.x.x
 
 ## Parameter types
 We support validating the following parameter types:
@@ -44,9 +48,8 @@ In order to setup and use `express-validation` consider the following simple exp
 
 ```js
 const express = require('express')
-const Joi = require('@hapi/joi')
 const bodyParser = require('body-parser')
-const { validate, ValidationError } = require('express-validation')
+const { validate, ValidationError, Joi } = require('express-validation')
 
 const loginValidation = {
   body: Joi.object({
@@ -137,7 +140,7 @@ The exported `validate` function takes a `schema` object and two optional argume
 `options` and `joiOptions` and
 returns a `validationError` instance if schema contains errors.
 
-### `schema` (Object)
+#### `schema` (Object)
 
 Default: `{}`
 
@@ -150,7 +153,7 @@ Includes validition rules, defined using `joi`, the rules are keyed by the follo
   - body
 
 
-### `options` (Object)
+#### `options` (Object)
 
 Default: `{ context: false, statusCode: 400, keyByField: false }`
 
@@ -162,11 +165,22 @@ Options, used by `express-validation`:
   - `keyByField`, flattens the error details object to a list of messages, keyed by field name
 
 
-### `joiOptions` (Object)
+#### `joiOptions` (Object)
 
 Default: `{}`
 
 Options, used by `joi`, see [Joi options](https://hapi.dev/family/joi/api/?v=17.1.0#anyvalidateasyncvalue-options), note:
+
+
+
+### `ValidationError`
+We expose a custom error; `ValidationError`, use this in you global express error handler to distinguish validtion errors from other types of error.
+
+
+### `Joi`
+We also expose the version of Joi we have as a dependency, in order to avoid compatibility issues with other versions of Joi.
+
+
 
 ## Examples
 
