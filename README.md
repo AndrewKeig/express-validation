@@ -8,12 +8,12 @@ express-validation
 [![airbnb-style](https://flat.badgen.net/badge/eslint/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
 [![Coverage Status](https://coveralls.io/repos/github/AndrewKeig/express-validation/badge.svg)](https://coveralls.io/github/AndrewKeig/express-validation)
 [![npm downloads](https://img.shields.io/npm/dm/express-validation.svg?style=flat)](https://www.npmjs.com/package/express-validation)
-[![Known Vulnerabilities](https://snyk.io//test/github/andrewkeig/express-validation/badge.svg?targetFile=package.json)](https://snyk.io//test/github/andrewkeig/express-validation?targetFile=package.json)
+[![Known Vulnerabilities](https://snyk.io/test/github/AndrewKeig/express-validation/badge.svg?targetFile=package.json)](https://snyk.io/test/github/AndrewKeig/express-validation?targetFile=package.json)
 
 
 `express-validation` is an express middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.
 
-We use [joi](https://github.com/hapijs/joi/tree/master) to define validation rules, we have a hard dependency on Joi in order to avoid compatibility issues with Joi releases.
+We use [joi](https://github.com/hapijs/joi/tree/master) to define validation rules. We have a hard dependency on Joi in order to avoid compatibility issues with Joi releases.  We are using snyk, which should help with this process.
 
 Currently support Joi v17.x.x
 
@@ -187,17 +187,17 @@ We also expose the version of Joi we have as a dependency, in order to avoid com
 For more information on how to use `express-validation` please see the following examples:
 
 #### abortEarly
-[`test/abortEarly.test.js`](`test/integration/abortEarly.test.js`)
+[`abortEarly.test.js`](`blob/master/__tests__/integration/abortEarly.test.js`)
 
 You can return multiple errors, not just the first encountered, by setting, the joi option `abortEarly: false`
 
 #### context
-[`test/context.test.js`](`test/integration/context.test.js`)
+[`context.test.js`](`blob/master/__tests__/context.test.js`)
 
 Enabling the `context` in `options`, allows you to reference other parts of the request in your validation.
 
 #### defaults
-[`test/default.test.js`](`test/integration/default.test.js`)
+[`default.test.js`](`blob/master/__tests__/default.test.js`)
 
 You can specify `joi` `default` values in your schema.
 
