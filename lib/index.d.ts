@@ -37,7 +37,7 @@ export declare function validate(schema: schema, options?: EvOptions, joiRoot?: 
 
 export class ValidationError {
   name: string;
-  message: "validation error";
+  message: string;
   statusCode: number;
   error: string;
   details: errors;
