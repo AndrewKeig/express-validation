@@ -3,7 +3,6 @@ express-validation
 
 [![Build Status](https://travis-ci.org/AndrewKeig/express-validation.svg?branch=master)](https://travis-ci.org/AndrewKeig/express-validation)
 [![npm module](https://badge.fury.io/js/express-validation.svg)](https://www.npmjs.org/package/express-validation)
-[![dependencies](https://david-dm.org/andrewkeig/express-validation.svg)](https://david-dm.org/andrewkeig/express-validation)
 [![Current Version](https://flat.badgen.net/npm/v/express-validation?icon=npm)](https://www.npmjs.org/package/express-validation)
 [![airbnb-style](https://flat.badgen.net/badge/eslint/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
 [![Coverage Status](https://coveralls.io/repos/github/AndrewKeig/express-validation/badge.svg)](https://coveralls.io/github/AndrewKeig/express-validation)

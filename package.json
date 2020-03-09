@@ -17,7 +17,7 @@
     "test:watch": "jest --watch",
     "lint": "eslint 'lib/*.js'",
     "test": "jest",
-    "test-single": "jest signed.test.js",
+    "test-single": "jest keyed.test.js",
     "benchmark": "node benchmarks/ev.js",
     "coverage": "jest --coverage --runInBand",
     "load-post": "load/post.sh",
