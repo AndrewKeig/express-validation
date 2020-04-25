@@ -6,10 +6,12 @@ describe('Ev Options', () => {
       const options = {
         context: true,
         keyByField: true,
+        mutate: true,
         statusCode: 422,
       };
       const expected = {
         context: true,
+        mutate: true,
         error: 'Unprocessable Entity',
         keyByField: true,
         statusCode: 422,

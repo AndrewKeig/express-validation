@@ -1,16 +1,17 @@
 // Type definitions for express-validation
 /// <reference types="node" />
 import { RequestHandler } from "express";
-import { 
-  ValidationOptions, 
+import {
+  ValidationOptions,
   ValidationError as JoiError,
-  Root as joiRoot, 
+  Root as joiRoot,
 } from '@hapi/joi';
 
 interface EvOptions {
   context?: boolean;
   keyByField?: boolean;
   statusCode?: number;
+  mutate?: boolean;
 }
 
 interface schema {

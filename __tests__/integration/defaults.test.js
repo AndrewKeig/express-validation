@@ -21,7 +21,7 @@ const schema = {
   }),
 };
 
-const app = createServer('post', '/defaults', schema, { context: true }, {}, 'body');
+const app = createServer('post', '/defaults', schema, { mutate: true }, {}, 'body');
 
 describe('Defaults', () => {
   describe('when the values are missing', () => {
