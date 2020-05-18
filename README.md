@@ -157,7 +157,9 @@ Includes validition rules, defined using `joi`, the rules are keyed by the follo
 Default: `{ context: false, statusCode: 400, keyByField: false }`
 
 Options, used by `express-validation`:
-  - `context`, grants Joi access to the request object. This allows you to reference other parts of the request in your validations, see [Joi.ref](https://hapi.dev/family/joi/api/?v=17.1.0#refkey-options) 
+  - `context`, grants Joi access to the request object. This allows you to:
+      - reference other parts of the request in your validations, see [Joi.ref](https://hapi.dev/family/joi/api/?v=17.1.0#refkey-options) 
+      - specify default values, see [Joi.default](https://hapi.dev/module/joi/api/#anydefaultvalue)
     - default { context: false } 
   - `statusCode`, defaults to `400`, this will also set the error message via nodes [status codes](https://nodejs.org/api/http.html#http_http_status_codes)
     - default { statusCode: 400 }
