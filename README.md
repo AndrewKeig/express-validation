@@ -175,7 +175,7 @@ Options, used by `joi`, see [Joi options](https://hapi.dev/family/joi/api/?v=17.
 
 
 ### `ValidationError`
-We expose a custom error; `ValidationError`, use this in you global express error handler to distinguish validtion errors from other types of error.
+We expose a custom error; `ValidationError`, use this in you global express error handler to distinguish validation errors from other types of error.
 
 
 ### `Joi`
