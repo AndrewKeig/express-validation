@@ -1,11 +1,16 @@
 
 ## Changelog
 
+
+3.0.3
+- adding better typescript support:
+[#16](https://github.com/AndrewKeig/express-validation/issues/106)
+
+
 ### Changes from versions 2.0
 
 - Global options for `allowUnknown*` removed
 - Joi no longer parsing response to JSON, so we dont
-
 
 
 ### Changes before 3.0
