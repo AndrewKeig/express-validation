@@ -1,6 +1,6 @@
 {
   "name": "express-validation",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "express-validation is a middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.",
   "main": "./lib/index",
