@@ -1,6 +1,8 @@
 __tests__
 _mocks_
 .github
+coverage
+.clinic
 benchmarks
 load
 .editorconfig
