@@ -11,13 +11,13 @@ const schema = {
   }),
 };
 
-const contextFalseApp = createServer('post', '/defaults', schema, { context: true }, {}, 'body');
-const contextTrueApp = createServer('post', '/defaults', schema, {}, {}, 'body');
+const contextFalseApp = createServer('post', '/defaults', schema, { context: false }, {}, 'body');
+const contextTrueApp = createServer('post', '/defaults', schema, { context: true }, {}, 'body');
 
 describe('Default values', () => {
   describe('when context is true', () => {
     it('should return the request joi parsed values', async () => {
-      const response = await request(contextFalseApp)
+      const response = await request(contextTrueApp)
         .post('/defaults')
         .send({});
 
@@ -31,7 +31,7 @@ describe('Default values', () => {
 
   describe('when context is false  and no values', () => {
     it('should return original request values of unndefined', async () => {
-      const response = await request(contextTrueApp)
+      const response = await request(contextFalseApp)
         .post('/defaults')
         .send({});
 
@@ -45,7 +45,7 @@ describe('Default values', () => {
 
   describe('when context is false', () => {
     it('should return original request values', async () => {
-      const response = await request(contextTrueApp)
+      const response = await request(contextFalseApp)
         .post('/defaults')
         .send({ firstname: 'John', lastname: 'Doe', registered: false, age: 25 });
 
