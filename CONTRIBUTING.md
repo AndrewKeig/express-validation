@@ -3,6 +3,7 @@
 
 Credit and Thanks to the following for contributing to this project.
 
+  * sikorsky555 https://github.com/sikorsky555
   * Alex Mazzeo https://github.com/amazzeo
   * Aymeric Beaumet https://github.com/aymericbeaumet
   * Christian Holm https://github.com/holm

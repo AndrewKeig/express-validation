@@ -12,7 +12,7 @@ const schema = {
 };
 
 const contextFalseApp = createServer('post', '/defaults', schema, { context: false }, {}, 'body');
-const contextTrueApp = createServer('post', '/defaults', schema, { context: true }, {}, 'body');
+const contextTrueApp = createServer('post', '/defaults', schema, { context: true }, { convert: true }, 'body');
 
 describe('Default values', () => {
   describe('when context is true', () => {
@@ -48,6 +48,20 @@ describe('Default values', () => {
       const response = await request(contextFalseApp)
         .post('/defaults')
         .send({ firstname: 'John', lastname: 'Doe', registered: false, age: 25 });
+
+      expect(response.statusCode).toBe(200);
+      expect(response.body.firstname).toBe('John');
+      expect(response.body.lastname).toBe('Doe');
+      expect(response.body.registered).toBe(false);
+      expect(response.body.age).toBe(25);
+    });
+  });
+
+  describe('when context is true and want to convert integer from string', () => {
+    it('should cast string to integer', async () => {
+      const response = await request(contextTrueApp)
+        .post('/defaults')
+        .send({ firstname: 'John', lastname: 'Doe', registered: false, age: '25' });
 
       expect(response.statusCode).toBe(200);
       expect(response.body.firstname).toBe('John');
