@@ -5,7 +5,7 @@ import {
   ValidationOptions, 
   ValidationError as JoiError,
   Root as joiRoot, 
-} from '@hapi/joi';
+} from 'joi';
 
 interface EvOptions {
   context?: boolean;
