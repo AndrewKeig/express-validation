@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 const request = require('supertest');
 const signature = require('cookie-signature');
 const { createServer } = require('../../_mocks_/express');
