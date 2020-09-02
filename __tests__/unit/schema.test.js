@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 const { evSchema } = require('../../lib/ev.js');
 const { joiSchema } = require('../../lib/joi.js');
 

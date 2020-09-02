@@ -1,5 +1,5 @@
 const express = require('express');
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 const bodyParser = require('body-parser');
 const { validate, ValidationError } = require('../lib/index');
 
