@@ -1,4 +1,4 @@
-const { mergeEvOptions } = require('../../lib/ev.js');
+const { mergeEvOptions, defaultErrorDetailsFormatter } = require('../../lib/ev.js');
 
 describe('Ev Options', () => {
   describe('when settings ev options', () => {
@@ -13,6 +13,7 @@ describe('Ev Options', () => {
         error: 'Unprocessable Entity',
         keyByField: true,
         statusCode: 422,
+        errorDetailsFormatter: defaultErrorDetailsFormatter,
       };
       const result = mergeEvOptions(options);
 

@@ -32,10 +32,29 @@ describe('Validate', () => {
         middleware(null, {}, () => { });
       }).toThrow(/Cannot read property 'headers' of null/);
     });
+    it('should use the correct errorDetailsFormatter', async () => {
+      let formatterCalled = false;
+      const errorDetailsFormatter = (errorDetails) => {
+        const safeResult = {};
+        Object.keys(errorDetails).forEach((key) => {
+          const safeErrorDetails = JSON.parse(JSON.stringify(errorDetails[key]));
+          delete safeErrorDetails.context.value;
+          safeResult[key] = safeErrorDetails;
+        });
+        formatterCalled = true;
+        return safeResult;
+      };
+      const middleware = validate(schema, { errorDetailsFormatter }, {});
+      middleware({ params: { id: 'secret' } }, {}, (e) => {
+        expect(e).not.toBe(null);
+        expect(formatterCalled).toBe(true);
+        expect(JSON.stringify(e)).not.toMatch(/"value":"secret"/);
+      });
+    });
   });
 
   describe('when schemas and options are valid', () => {
-    it('should return nullr', async () => {
+    it('should return null', async () => {
       expect(() => {
         const middleware = validate(schema, {}, {});
         middleware({}, {}, (e) => {
