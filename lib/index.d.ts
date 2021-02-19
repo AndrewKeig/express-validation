@@ -1,10 +1,10 @@
 // Type definitions for express-validation
 /// <reference types="node" />
 import { RequestHandler } from "express";
-import { 
-  ValidationOptions, 
+import {
+  ValidationOptions,
   ValidationError as JoiError,
-  Root as joiRoot, 
+  Root as joiRoot,
 } from 'joi';
 
 interface EvOptions {
@@ -35,7 +35,7 @@ export declare const Joi: joiRoot;
 
 export declare function validate(schema: schema, options?: EvOptions, joiRoot?: ValidationOptions): RequestHandler;
 
-export class ValidationError {
+export class ValidationError extends JoiError {
   name: string;
   message: string;
   statusCode: number;
