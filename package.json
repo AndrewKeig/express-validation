@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "joi": "17.x.x",
-    "@types/express": "4.x.x",
+    "@types/express": "4.17.12",
     "@types/hapi__joi": "16.x.x"
   },
   "jest": {
