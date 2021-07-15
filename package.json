@@ -1,14 +1,14 @@
 {
-  "name": "express-validation",
-  "version": "3.0.8",
+  "name": "@powersjcb/express-validation",
+  "version": "3.0.9",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
-  "description": "express-validation is a middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.",
+  "description": "fork of AK's express-validation is a middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.",
   "main": "./lib/index",
   "types": "lib/index.d.ts",
-  "homepage": "https://github.com/andrewkeig/express-validation",
+  "homepage": "https://github.com/powersjcb/express-validation",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrewkeig/express-validation"
+    "url": "https://github.com/powersjcb/express-validation"
   },
   "bugs": {
     "url": "https://github.com/andrewkeig/express-validation/issues"
