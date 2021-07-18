@@ -1,6 +1,6 @@
 {
   "name": "@powersjcb/express-validation",
-  "version": "3.0.10",
+  "version": "3.0.11",
   "author": "Andrew Keig <andrew.keig@gmail.com>",
   "description": "fork of AK's express-validation is a middleware that validates a request and returns a response with errors; if any of the configured validation rules fail.",
   "main": "./lib/index",
