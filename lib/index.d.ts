@@ -11,7 +11,7 @@ interface EvOptions {
   context?: boolean;
   keyByField?: boolean;
   statusCode?: number;
-  errorDetailsFormatter?: (err: ValidationError) => ValidationError;
+  errorDetailsFormatter?: (err: JoiError) => JoiError;
 }
 
 interface schema {
