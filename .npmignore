@@ -10,3 +10,4 @@ load
 .eslintrc
 .nvmrc
 .travis.yml
+.idea
