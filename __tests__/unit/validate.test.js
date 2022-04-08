@@ -30,7 +30,7 @@ describe('Validate', () => {
       expect(() => {
         const middleware = validate(schema, {}, {});
         middleware(null, {}, () => { });
-      }).toThrow(/Cannot read property 'headers' of null/);
+      }).toThrow(/Cannot read property 'headers' of null|Cannot read properties of null \(reading 'headers'\)/);
     });
   });
 

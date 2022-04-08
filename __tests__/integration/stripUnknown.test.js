@@ -36,7 +36,7 @@ describe('validate strip unknown', () => {
 
   describe('when the request contains unknown properties and joi stripUnknown is true', () => {
     it('should return a 200 response', async () => {
-      const app = createServer('post', '/login', schema, {}, { stripUnknown: true });
+      const app = createServer('post', '/login', schema, {}, { stripUnknown: true }, 'body');
       const login = {
         email: 'andrew.keig@gmail.com',
         password: '12356',
@@ -48,6 +48,30 @@ describe('validate strip unknown', () => {
         .send(login);
 
       expect(response.statusCode).toBe(200);
+      expect(response.body.email).toBe('andrew.keig@gmail.com');
+      expect(response.body.password).toBe('12356');
+      // Actually getting rid of the property requires context:true
+      expect(response.body.removeThis).toBe('xx');
+    });
+
+    describe('and when combined with context:true', () => {
+      it('should return a 200 response and strip unknown properties from the request body seen by the handler', async () => {
+        const app = createServer('post', '/login', schema, { context: true }, { stripUnknown: true }, 'body');
+        const login = {
+          email: 'andrew.keig@gmail.com',
+          password: '12356',
+          removeThis: 'xx',
+        };
+
+        const response = await request(app)
+          .post('/login')
+          .send(login);
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body.email).toBe('andrew.keig@gmail.com');
+        expect(response.body.password).toBe('12356');
+        expect(response.body.removeThis).toBe(undefined);
+      });
     });
   });
 });
