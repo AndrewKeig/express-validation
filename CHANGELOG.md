@@ -1,10 +1,18 @@
-
 ## Changelog
 
+4.0.0
+- Use async/await syntax (semver-major):
+  [#159](https://github.com/AndrewKeig/express-validation/issues/159)
+- Fix [#153](https://github.com/AndrewKeig/express-validation/issues/153):
+  [#159](https://github.com/AndrewKeig/express-validation/issues/159)
+
+3.1.0
+- Handle mutation by completely replacing the request property with validated/coerced value from Joi:
+  [#154](https://github.com/AndrewKeig/express-validation/issues/154)
 
 3.0.3
 - adding better typescript support:
-[#16](https://github.com/AndrewKeig/express-validation/issues/106)
+  [#106](https://github.com/AndrewKeig/express-validation/issues/106)
 
 
 ### Changes from versions 2.0
