@@ -27,10 +27,14 @@ describe('Validate', () => {
 
   describe('when invalid req', () => {
     it('should throw error', async () => {
-      expect(() => {
-        const middleware = validate(schema, {}, {});
-        middleware(null, {}, () => { });
-      }).toThrow(/Cannot read property 'headers' of null|Cannot read properties of null \(reading 'headers'\)/);
+      const next = jest.fn();
+      const middleware = validate(schema, {}, {});
+      await middleware(null, {}, next);
+
+      expect(next).toHaveBeenCalledTimes(1);
+      const error = next.mock.calls[0][0];
+      expect(error).toBeInstanceOf(TypeError);
+      expect(error.message).toMatch(/Cannot read property 'headers' of null|Cannot read properties of null \(reading 'headers'\)/)
     });
   });
 
