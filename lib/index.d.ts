@@ -35,10 +35,11 @@ export declare const Joi: joiRoot;
 
 export declare function validate(schema: schema, options?: EvOptions, joiRoot?: ValidationOptions): RequestHandler;
 
-export class ValidationError {
+export declare class ValidationError extends Error {
   name: string;
   message: string;
   statusCode: number;
   error: string;
   details: errors;
+  constructor(errors: errors, options: object);
 }
