@@ -68,7 +68,7 @@ describe('Schema', () => {
   describe('Joi Schema', () => {
     describe('when joi schema has a single key', () => {
       it('should return valid schema', async () => {
-        const options = { body: {} };
+        const options = { body: Joi.object({}) };
 
         expect(() => {
           Joi.assert(options, joiSchema);
@@ -79,13 +79,13 @@ describe('Schema', () => {
     describe('when joi schema has all keys', () => {
       it('should return valid schema', async () => {
         const options = {
-          headers: {},
-          params: {},
-          query: {},
-          cookies: {},
-          signedCookies: {},
-          body: {},
-        }
+          headers: Joi.object({}),
+          params: Joi.object({}),
+          query: Joi.object({}),
+          cookies: Joi.object({}),
+          signedCookies: Joi.object({}),
+          body: Joi.object({}),
+        };
 
         expect(() => {
           Joi.assert(options, joiSchema);
