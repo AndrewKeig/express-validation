@@ -6,6 +6,9 @@
   "main": "./lib/index",
   "types": "lib/index.d.ts",
   "homepage": "https://github.com/Nicholaiii/express-validation",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Nicholaiii/express-validation"
