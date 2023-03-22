@@ -37,8 +37,10 @@
   ],
   "dependencies": {
     "@types/express": "^4.17.17",
-    "@types/hapi__joi": "17.x.x",
-    "joi": "^17.9.1"
+    "@types/hapi__joi": "17"
+  },
+  "peerDependencies": {
+    "joi": "^17"
   },
   "jest": {
     "collectCoverageFrom": [
