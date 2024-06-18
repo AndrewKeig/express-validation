@@ -1,11 +1,7 @@
 // Type definitions for express-validation
 /// <reference types="node" />
 import { RequestHandler } from "express";
-import {
-  ValidationOptions,
-  ValidationError as JoiError,
-  Root as joiRoot,
-} from 'joi';
+import { ValidationOptions, ValidationErrorItem, Root as joiRoot } from "joi";
 
 interface EvOptions {
   context?: boolean;
@@ -23,12 +19,12 @@ interface schema {
 }
 
 interface errors {
-  params?: JoiError[];
-  headers?: JoiError[];
-  query?: JoiError[];
-  cookies?: JoiError[];
-  signedCookies?: JoiError[];
-  body?: JoiError[];
+  params?: ValidationErrorItem[];
+  headers?: ValidationErrorItem[];
+  query?: ValidationErrorItem[];
+  cookies?: ValidationErrorItem[];
+  signedCookies?: ValidationErrorItem[];
+  body?: ValidationErrorItem[];
 }
 
 export declare const Joi: joiRoot;
